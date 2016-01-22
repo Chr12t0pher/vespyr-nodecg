@@ -7,6 +7,13 @@
     "faIcon": "fa-microphone"
   },
   {
+    "name": "obs-panel",
+    "title": "OBS Control",
+    "width": 2,
+    "file": "obs.html",
+    "faIcon": "fa-video-camera"
+  },
+  {
     "name": "champ-select-panel",
     "title": "Champion Select",
     "width": 6,
