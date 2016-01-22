@@ -1,0 +1,11 @@
+{
+    "name": "vespyr",
+    "version": "0.0.1-prealpha",
+    "nodecgDependency": "~0.6.2",
+    "description": "Stream controller for Vespyr",
+    "authors": [
+        "Chris Stevens <contact@cstevens.biz>"
+    ],
+    "homepage": "http://cstevens.biz",
+    "license": "(C) C Stevens 2016 - All Rights Reserved"
+}

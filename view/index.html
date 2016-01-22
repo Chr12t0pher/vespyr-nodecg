@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Vespyr View Index</title>
+</head>
+<body>
+<ul>
+    <li><a id="champ-select" href="champ-select.html?key=">Champion Select</a>
+        <ul>
+            <li><a id="champ-select-foreground" href="champ-select-foreground.html?key=">Champ Select Foreground</a></li>
+            <li><a id="champ-select-background" href="champ-select-background.html?key=">Champ Select Background</a></li>
+        </ul>
+    </li>
+</ul>
+
+<a id="casters" href="casters.html?key="><p>Casters</p></a>
+
+<p>Copyright Chris Stevens 2016</p>
+
+<script>
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+    for(var i = 0, size = document.getElementsByTagName("A").length; i < document.getElementsByTagName("A").length; i++) {
+        document.getElementsByTagName("A")[i].href +=  getParameterByName("key");
+    }
+</script>
+</body>
+</html>

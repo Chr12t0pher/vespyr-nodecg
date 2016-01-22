@@ -1,0 +1,23 @@
+[
+  {
+    "name": "casters-panel",
+    "title": "Casters",
+    "width": 2,
+    "file": "casters.html",
+    "faIcon": "fa-microphone"
+  },
+  {
+    "name": "champ-select-panel",
+    "title": "Champion Select",
+    "width": 6,
+    "file": "champ-select.html",
+    "faIcon": "fa-cogs"
+  },
+  {
+    "name": "teams-panel",
+    "title": "Teams",
+    "width": 6,
+    "file": "teams.html",
+    "faIcon": "fa-soccer-ball-o"
+  }
+]
