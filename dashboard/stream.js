@@ -12,7 +12,7 @@ var currentScene = "";
 var obs = new OBSRemote();
 
 var connect = function() {
-    obs.connect("localhost", "admin");
+    obs.connect("127.0.0.1", "admin");
 };
 
 connect();

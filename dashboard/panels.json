@@ -7,10 +7,10 @@
     "faIcon": "fa-microphone"
   },
   {
-    "name": "obs-panel",
-    "title": "OBS Control",
+    "name": "stream-panel",
+    "title": "Stream Control",
     "width": 2,
-    "file": "obs.html",
+    "file": "strean.html",
     "faIcon": "fa-video-camera"
   },
   {
