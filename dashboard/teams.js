@@ -2,8 +2,8 @@
 
 /** INPUTS/BUTTONS **/
 var $teamFields = {
-    "blue": {"name": $("#teams-blue-name"), "score": $("#teams-blue-score"), "form": $("#teams-blue-form")},
-    "red": {"name": $("#teams-red-name"), "score": $("#teams-red-score"), "form": $("#teams-red-form")}
+    "blue": {"name": $("#teams-blue-name"), "score": $("#teams-blue-score"), "form": $("#teams-blue-form"), "tag": $("#teams-blue-tag")},
+    "red": {"name": $("#teams-red-name"), "score": $("#teams-red-score"), "form": $("#teams-red-form"), "tag": $("#teams-red-tag")}
 };
 var $teamRoster = {
     "blue": {"top": $("#teams-blue-top"), "jungle": $("#teams-blue-jungle"), "mid": $("#teams-blue-mid"), "adc": $("#teams-blue-adc"), "support": $("#teams-blue-support")},
@@ -72,40 +72,27 @@ var conference = new Bloodhound({
     ]
 });
 
-$(function() { // Set up typeahead.js for the caster names.
-    $.each($teamFields, function(team, value) {
-        value["name"].typeahead({
-            highlight: true
-        }, {
-            name: "premier",
-            display: "name",
-            source: premier,
-            templates: {
-                header: '<h4 class="list-group-item-heading league">Premier League</h4>'
-            }
-        }, {
-            name: "major",
-            display: "name",
-            source: major,
-            templates: {
-                header: '<h4 class="list-group-item-heading league">Major League</h4>'
-            }
-        }, {
-            name: "conference",
-            display: "name",
-            source: conference,
-            templates: {
-                header: '<h4 class="list-group-item-heading league">Conference League</h4>'
-            }
-        }).bind("typeahead:select", function(ev, suggestion) {
-            $.each(suggestion["roster"], function(lane, value) {
-                $teamRoster[team][lane].val(value);
-            })
-        }).bind("typeahead:autocomplete", function(ev, suggestion) {
-            $.each(suggestion["roster"], function(lane, value) {
-                $teamRoster[team][lane].val(value);
-            })
-        });
+var all = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace("name"),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    prefetch: "http://app.vespyrleague.com/api/organisations/31/teams"
+});
+
+
+$.each($teamFields, function(team, value) {
+    value["name"].typeahead({
+        highlight: true
+    }, {
+        name: "openmid-api",
+        display: "name",
+        source: all,
+        templates: {
+            header: '<h4 class="list-group-item-heading league">Openmid API</h4>'
+        }
+    }).bind("typeahead:select", function (ev, suggestion) {
+            $teamFields[team]["tag"].val(suggestion["tag"]);
+    }).bind("typeahead:autocomplete", function (ev, suggestion) {
+        $teamFields[team]["tag"].val(suggestion["tag"]);
     });
 });
 
@@ -114,7 +101,10 @@ $(function() { // Set up typeahead.js for the caster names.
 var teamUpdate = function() {
     teamReplicant.value = {
         "blue": {
-            "team": {"name": $teamFields["blue"]["name"].val(), "score": $teamFields["blue"]["score"].val(), "form": $teamFields["blue"]["form"].val()},
+            "team": {
+                "name": $teamFields["blue"]["name"].val(), "score": $teamFields["blue"]["score"].val(),
+                "form": $teamFields["blue"]["form"].val(), "tag": $teamFields["blue"]["tag"].val()
+            },
             "roster": {
                 "top": $teamRoster["blue"]["top"].val(),
                 "jungle": $teamRoster["blue"]["jungle"].val(),
@@ -124,7 +114,10 @@ var teamUpdate = function() {
             }
         },
         "red": {
-            "team": {"name": $teamFields["red"]["name"].val(), "score": $teamFields["red"]["score"].val(), "form": $teamFields["red"]["form"].val()},
+            "team": {
+                "name": $teamFields["red"]["name"].val(), "score": $teamFields["red"]["score"].val(),
+                "form": $teamFields["red"]["form"].val(), "tag": $teamFields["red"]["tag"].val()
+            },
             "roster": {
                 "top": $teamRoster["red"]["top"].val(),
                 "jungle": $teamRoster["red"]["jungle"].val(),
@@ -154,7 +147,6 @@ $("#teams-switch").click(function() {
 $updateBtn.click(function() {
     teamUpdate();
 });
-
 $("#teams-reset").click(function() {
     $.each(["blue", "red"], function(key, team) {
         $.each($teamFields[team], function(key, value) {
@@ -166,4 +158,3 @@ $("#teams-reset").click(function() {
     });
     teamUpdate();
 });
-
