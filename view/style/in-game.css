@@ -14,15 +14,69 @@ body {
 }
 
 /** SCORE **/
+#score {
+    position: absolute;
+    margin-top: 64px;
+    margin-left: 567px;
+    height: 54px;
+    width: 785px;
+
+    overflow: hidden;
+}
 #blue-score, #red-score {
     position: absolute;
-    margin-top: 74px;
-    width: 293px;
+    width: 317px;
+    height: 54px;
+
+    overflow: hidden;
+}
+#blue-score-text, #red-score-text {
+    margin-top: 10px;
 
     font-family: spiegelcdotregular, sans-serif;
     color: #F8FCFD;
     font-size: 36px;
     text-align: center;
 }
-#blue-score { margin-left: 579px; }
-#red-score { margin-left: 1047px; }
+#blue-score {
+
+    background-image: url("../images/in-game/blue-score.png")
+}
+#red-score {
+    margin-left: 468px;
+
+    background-image: url("../images/in-game/red-score.png");
+}
+
+/** SCOREBOARD **/
+#bottom-center > div {
+    position: absolute;
+
+    font-family: spiegelcdotsemibold, sans-serif;
+    color: #F8FCFD;
+    text-align: center;
+}
+#bottom-center-left-text-upper {
+    margin-top: 836px;
+    margin-left: 574px;
+    width: 349px;
+    height: 32px;
+
+    font-size: 30px;
+}
+#bottom-center-left-text-lower {
+    margin-top: 867px;
+    margin-left: 574px;
+    width: 349px;
+    height: 32px;
+
+    font-size: 30px;
+}
+#bottom-center-right-text {
+    margin-top: 839px;
+    margin-left: 1003px;
+    width: 349px;
+    height: 51px;
+
+    font-size: 50px;
+}
