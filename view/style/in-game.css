@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    background: none transparent;
+}
+#container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+
+    background-image: url("../images/in-game/in-game.png");
+}
+
+/** SCORE **/
+#blue-score, #red-score {
+    position: absolute;
+    margin-top: 74px;
+    width: 293px;
+
+    font-family: spiegelcdotregular, sans-serif;
+    color: #F8FCFD;
+    font-size: 36px;
+    text-align: center;
+}
+#blue-score { margin-left: 579px; }
+#red-score { margin-left: 1047px; }
