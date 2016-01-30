@@ -5,17 +5,15 @@ var $sceneInputs = {
     "coming-up": $("input[value='coming-up']"), "champion-select": $("input[value='champion-select']"),
     "loading": $("input[value='loading']"), "in-game": $("input[value='in-game']"), "end": $("input[value='end']")
 };
-var currentScene = "";
 
 
 /** OBS **/
 var obs = new OBSRemote();
 
-var connect = function() {
-    obs.connect("127.0.0.1", "admin");
+var connect = function(ip) {
+    console.log("[OBS] Connecting on " + ip);
+    obs.connect(ip, "admin");
 };
-
-connect();
 
 // Register all the event handlers for OBSRemote.
 obs.onConnectionOpened = function() {
@@ -25,7 +23,7 @@ obs.onConnectionOpened = function() {
 obs.onAuthenticationSucceeded = function() {
     obs.getCurrentScene(function(scene) {
         $sceneInputs[scene["name"]].prop("checked", true);
-        currentScene = scene["name"];
+        obsScene.value = scene["name"];
     });
     $obsStatus.removeClass().addClass("alert alert-success").text("CONNECTED");
     obs.getStreamingStatus(function(stream, previewing) {
@@ -45,12 +43,12 @@ obs.onAuthenticationFailed = function() {
 
 obs.onConnectionFailed = function() {
     $obsStatus.removeClass().addClass("alert alert-danger").text("CONNECTION FAILED");
-    $.debounce(connect(), 5000);
+    setTimeout(connect(), 5000);
 };
 
 obs.onConnectionClosed = function() {
     $obsStatus.removeClass().addClass("alert alert-danger").text("CONNECTION CLOSED");
-    $.debounce(connect(), 5000);
+    setTimeout(connect(), 5000);
 };
 
 obs.onStreamStarted = function(previewing) {
@@ -66,16 +64,26 @@ obs.onStreamStopped = function() {
 };
 
 obs.onSceneSwitched = function(sceneName) { // If scene is changed in OBS...
-    $sceneInputs[sceneName].prop("checked", true); // Update in NodeCG.
+    obsScene.value = {"scene": sceneName, "update": "obs"}; // Update the OBS replicant.
 };
 
 
 /** REPLICANTS **/
-var obsScene = nodecg.Replicant("obs", {defaultValue: ""});
+var obsScene = nodecg.Replicant("obs-scene", {defaultValue: {"scene": "", "update": ""}})
+    .on("change", function(oldVal, newVal) { // On change...
+        if (newVal["update"] == "obs") {
+            $sceneInputs[newVal["scene"]].prop("checked", true); // Update dashboard.
+        } else if (newVal["update"] == "nodecg") {
+            obs.setCurrentScene(newVal["scene"]); // Update OBS
+        }
+    });
 
 $.each($sceneInputs, function(scene, value) {
     value.click(function() { // If a scene is selected...
-        obsScene.value = scene; // Update the scene in OBS.
-        obs.setCurrentScene(scene); // Update the OBS replicant.
+        obsScene.value = {"scene": scene, "update": "nodecg"}; // Update the OBS replicant.
     })
+});
+
+$("#obs-ip-btn").click(function() {
+    connect($("#obs-ip").val());
 });
