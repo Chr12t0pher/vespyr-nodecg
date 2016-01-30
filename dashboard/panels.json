@@ -14,13 +14,6 @@
     "faIcon": "fa-video-camera"
   },
   {
-    "name": "champ-select-panel",
-    "title": "Champion Select",
-    "width": 6,
-    "file": "champ-select.html",
-    "faIcon": "fa-cogs"
-  },
-  {
     "name": "teams-panel",
     "title": "Teams",
     "width": 6,
