@@ -50,8 +50,8 @@ body {
     width: 444px;
     height: 88px;
 
-    font-size: 92px;
-    font-family: spiegelcdotsemibold, sans-serif;
+    font-size: 82px;
+    font-family: monospace;
     color: #F8FCFD;
     text-align: center;
 
@@ -127,4 +127,64 @@ body {
 }
 #game-3-info {
     display: none;
+}
+
+/** INFO **/
+.team1-info, .team-2-info {
+    position: absolute;
+    margin-top: 0px;
+    width: 637px;
+    height: 339px;
+}
+.team-1-info {
+    margin-left: 0px;
+}
+.team-2-info {
+    left: 846px;
+}
+.position, .form {
+    position: absolute;
+    top: 26px;
+    width: 270px;
+    height: 40px;
+
+    font-family: spiegelcdotsemibold, sans-serif;
+    font-size: 38px;
+    color: #F8FCFD;
+
+    z-index: 10;
+}
+.position {
+    margin-left: 15px;
+}
+.form {
+    margin-left: 350px;
+
+    text-align: right;
+}
+
+
+.roster {
+    position: absolute;
+    margin-top: 79px;
+    margin-left: 175px;
+    width: 454px;
+    height: 240px;
+}
+.roster > div {
+    float: left;
+    position: relative;
+    margin-top: 9px;
+    left: 0px;
+    width: 454px;
+    height: 40px;
+
+    font-family: spiegelcdotregular, sans-serif;
+    font-size: 38px;
+    color: #F8FCFD;
+
+    z-index: 10;
+}
+.top {
+    margin-top: 0px;
 }
