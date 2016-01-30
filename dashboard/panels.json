@@ -7,10 +7,10 @@
     "faIcon": "fa-microphone"
   },
   {
-    "name": "stream-panel",
+    "name": "obs-panel",
     "title": "Stream Control",
     "width": 2,
-    "file": "stream.html",
+    "file": "obs.html",
     "faIcon": "fa-video-camera"
   },
   {
@@ -26,5 +26,12 @@
     "width": 6,
     "file": "teams.html",
     "faIcon": "fa-soccer-ball-o"
+  },
+  {
+    "name": "scenes-panel",
+    "title": "Scene Configuration",
+    "width": 6,
+    "file": "scenes.html",
+    "faIcon": "fa-cog"
   }
 ]
