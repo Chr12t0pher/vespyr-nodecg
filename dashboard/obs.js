@@ -2,7 +2,7 @@
 var $obsStatus = $("#obs-connection-status");
 var $streamStatus = $("#obs-stream-status");
 var $sceneInputs = {
-    "coming-up": $("input[value='coming-up']"), "champion-select": $("input[value='champion-select']"),
+    "coming-up": $("input[value='coming-up']"), "champ-select": $("input[value='champ-select']"),
     "loading": $("input[value='loading']"), "in-game": $("input[value='in-game']"), "end": $("input[value='end']")
 };
 
