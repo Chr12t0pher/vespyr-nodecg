@@ -505,4 +505,45 @@ $(".bootswitch").bootstrapSwitch({
  ###########
  */
 
+/** INPUTS **/
+var $inGameTexts = {"left": {"top": $("#in-game-left-top-text"), "bottom": $("#in-game-left-bottom-text")}, "right": $("#in-game-right-text")};
+var $inGameUpdateBtn = $("#in-game-update");
+var $inGameResetBtn = $("#in-game-reset");
+
+/** REPLICANTS **/
+var inGameReplicant = nodecg.Replicant("in-game", {defaultValue: {"left":{"top": "", "bottom": ""}, "right": ""}})
+    .on("change", function(oldVal, newVal) { // On change...
+        $inGameTexts["left"]["top"].val(newVal["left"]["top"]).parent().removeClass("has-warning");
+        $inGameTexts["left"]["bottom"].val(newVal["left"]["bottom"]).parent().removeClass("has-warning"); // Remove 'edited' class.;
+        $inGameTexts["right"].val(newVal["right"]).parent().removeClass("has-warning"); // Remove 'edited' class.;
+    });
+
+/** UPDATING **/
+var inGameUpdate = function() {
+    inGameReplicant.value = {
+        "left": {"top": $inGameTexts["left"]["top"].val(), "bottom": $inGameTexts["left"]["bottom"].val()},
+        "right": $inGameTexts["right"].val()
+    };
+};
+
+$(".in-game-on-change").bind("change paste keyup", function(e) { // If any of the champion names are changed...
+    if (e.keyCode == 13) {
+        inGameUpdate(); // Update if enter key.
+    } else { // Else somethings changed.
+        $inGameUpdateBtn.prop("disabled", false).addClass("btn-primary"); // Enable the update button.
+        $(this).parent().addClass("has-warning"); // Colour the text-box to show it hasn't been updated.
+    }
+});
+
+$inGameUpdateBtn.click(function() {
+    inGameUpdate();
+});
+
+/** RESET **/
+$inGameResetBtn.click(function() {
+    $inGameTexts["left"]["top"].val("");
+    $inGameTexts["left"]["bottom"].val("");
+    $inGameTexts["right"].val("");
+    inGameUpdate();
+});
 
