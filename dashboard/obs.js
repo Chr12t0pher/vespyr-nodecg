@@ -114,7 +114,9 @@ $obsStartConfirmBtn.click(function() {
     setTimeout(function() {
         obs.toggleStream(); // Go live!
         obs.setCurrentScene("champ-select"); // Go through all the scenes to load the web-pages.
+        obs.setCurrentScene("loading");
         obs.setCurrentScene("in-game");
+        obs.setCurrentScene("end");
         obs.setCurrentScene("coming-up"); // End on the coming-up screen deliberately.
     }, 1000); // Go live after 1 second to account for turning off the preview.
 });
