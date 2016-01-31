@@ -1,6 +1,9 @@
 /** INPUTS/BUTTONS **/
 var $obsStatus = $("#obs-connection-status");
 var $streamStatus = $("#obs-stream-status");
+var $obsStartPromptBtn = $("#obs-start-prompt");
+var $obsStartConfirmBtn = $("#obs-start-confirm");
+var $obsStopBtn = $("#obs-stop-btn");
 var $sceneInputs = {
     "coming-up": $("input[value='coming-up']"), "champ-select": $("input[value='champ-select']"),
     "loading": $("input[value='loading']"), "in-game": $("input[value='in-game']"), "end": $("input[value='end']")
@@ -29,10 +32,13 @@ obs.onAuthenticationSucceeded = function() {
     obs.getStreamingStatus(function(stream, previewing) {
         if (stream && !previewing) {
             $streamStatus.removeClass().addClass("alert alert-success").text("STREAM LIVE");
+            $obsStartPromptBtn.parent().hide();
         } else if (stream && previewing) {
             $streamStatus.removeClass().addClass("alert alert-warning").text("STREAM PREVIEWING");
+            $obsStopBtn.parent().hide();
         } else {
             $streamStatus.removeClass().addClass("alert alert-danger").text("STREAM OFFLINE");
+            $obsStopBtn.parent().hide();
         }
     });
 };
@@ -54,13 +60,19 @@ obs.onConnectionClosed = function() {
 obs.onStreamStarted = function(previewing) {
     if (!previewing) {
         $streamStatus.removeClass().addClass("alert alert-success").text("STREAM LIVE");
+        $obsStartPromptBtn.parent().hide();
+        $obsStopBtn.parent().show();
     } else {
         $streamStatus.removeClass().addClass("alert alert-warning").text("STREAM PREVIEWING");
+        $obsStartPromptBtn.parent().show();
+        $obsStopBtn.parent().hide();
     }
 };
 
 obs.onStreamStopped = function() {
-    $streamStatus.removeClass().addClass("alert alert-danger").text("STREAM OFFLINE")
+    $streamStatus.removeClass().addClass("alert alert-danger").text("STREAM OFFLINE");
+    $obsStartPromptBtn.parent().show();
+    $obsStopBtn.parent().hide();
 };
 
 obs.onSceneSwitched = function(sceneName) { // If scene is changed in OBS...
@@ -90,4 +102,27 @@ $("#obs-ip-btn").click(function() {
            " If you're connecting to 127.0.0.1 or localhost disregard this message.")
     }
     connect($("#obs-ip").val());
+});
+
+/** START/STOP **/
+$obsStartConfirmBtn.click(function() {
+    obs.getStreamingStatus(function(live, preview) {
+        if (live && preview) { // If the preview is live...
+            obs.toggleStream(); // Toggle it off.
+        }
+    });
+    setTimeout(function() {
+        obs.toggleStream(); // Go live!
+        obs.setCurrentScene("champ-select"); // Go through all the scenes to load the web-pages.
+        obs.setCurrentScene("in-game");
+        obs.setCurrentScene("coming-up"); // End on the coming-up screen deliberately.
+    }, 1000); // Go live after 1 second to account for turning off the preview.
+});
+
+$obsStopBtn.click(function() {
+    obs.getStreamingStatus(function(live, preview) {
+        if (live) {
+            obs.toggleStream();
+        }
+    });
 });
