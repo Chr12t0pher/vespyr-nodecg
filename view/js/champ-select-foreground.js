@@ -12,42 +12,57 @@ var $teamBans = {
     "red": {"ban1": $("#red-team-ban1"), "ban2": $("#red-team-ban2"), "ban3": $("#red-team-ban3")}
 };
 
-
-var teamReplicant = nodecg.Replicant("teams")
-    .on("change", function(oldVal, newVal) { // On change...
-        $.each(newVal, function(team, value) { // For each team...
-            $.each(value["team"], function(key, value) { // For each of the team info...
-                if (value != $teamInfo[team][key].text()) { // If value has changed...
-                    var changeTeamInfo = new TimelineLite(); // Animate the changing of the value.
-                    changeTeamInfo
-                        .to($teamInfo[team][key], 0.5, { // Fade out.
-                            opacity: 0.0
-                        })
-                        .call(function() { // Update text.
-                            $teamInfo[team][key].text(value);
-                        })
-                        .to($teamInfo[team][key], 0.5, { // Fade in.
-                            opacity: 1.0
-                        });
-                }
-            });
-            $.each(value["roster"], function(key, value) { // For each player name...
-                if (value != $teamRoster[team][key].text()) { // If value has changed...
-                    var changeTeamRoster = new TimelineLite(); // Animate the changing of the value.
-                    changeTeamRoster
-                        .to($teamRoster[team][key], 0.5, { // Fade in.
-                            opacity: 0.0
-                        })
-                        .call(function() { // Update text.
-                            $teamRoster[team][key].text(value);
-                        })
-                        .to($teamRoster[team][key], 0.5, { // Fade in.
-                            opacity: 1.0
-                        });
-                }
-            });
+/** REPLICANTS **/
+var updateTeam = function() {
+    if(!comingUpReplicant.value) { // If the coming up replicant hasn't loaded yet, return.
+        return
+    }
+    $.each(teamReplicant.value[comingUpReplicant.value["next_game"]], function(team, value) { // For each team...
+        $.each(value["info"], function(key, value) { // For each of the team info...
+            if (["tag", "position"].indexOf(key) !== -1) { // If value isn't used in this scene...
+                return
+            }
+            if (value != $teamInfo[team][key].text()) { // If value has changed...
+                var changeTeamInfo = new TimelineLite(); // Animate the changing of the value.
+                changeTeamInfo
+                    .to($teamInfo[team][key], 0.5, { // Fade out.
+                        opacity: 0.0
+                    })
+                    .call(function() { // Update text.
+                        $teamInfo[team][key].text(value);
+                    })
+                    .to($teamInfo[team][key], 0.5, { // Fade in.
+                        opacity: 1.0
+                    });
+            }
+        });
+        $.each(value["roster"], function(position, value) { // For each player name...
+            if (value != $teamRoster[team][position].text()) { // If value has changed...
+                var changeTeamRoster = new TimelineLite(); // Animate the changing of the value.
+                changeTeamRoster
+                    .to($teamRoster[team][position], 0.5, { // Fade in.
+                        opacity: 0.0
+                    })
+                    .call(function() { // Update text.
+                        $teamRoster[team][position].text(value);
+                    })
+                    .to($teamRoster[team][position], 0.5, { // Fade in.
+                        opacity: 1.0
+                    });
+            }
         });
     });
+};
+var teamReplicant = nodecg.Replicant("scene-teams")
+    .on("change", function(oldVal, newVal) { // On change...
+        updateTeam()
+    });
+var comingUpReplicant = nodecg.Replicant("coming-up")
+    .on("change", function(oldVal, newVal) { // On change...
+        updateTeam()
+    });
+
+
 
 var champsReplicant = nodecg.Replicant("champ-select")
     .on("change", function(oldVal, newVal) { // If the champs variable changes...

@@ -1,91 +1,103 @@
 var $comingUpInfo = {
     "game1": {
-        "left": {
-            "name": $("#game1-left-name"),
-            "tag": $("#game1-left-tag"),
-            "score": $("#game1-left-score"),
-            "position": $("#game1-left-position"),
-            "form": $("#game1-left-form"),
+        "blue": {
+            "info": {
+                "name": $("#game1-blue-name"),
+                "tag": $("#game1-blue-tag"),
+                "score": $("#game1-blue-score"),
+                "position": $("#game1-blue-position"),
+                "form": $("#game1-blue-form")
+            },
             "roster": {
-                "top": $("#game1-left-top"),
-                "jungle": $("#game1-left-jungle"),
-                "mid": $("#game1-left-mid"),
-                "adc": $("#game1-left-adc"),
-                "support": $("#game1-left-support")
+                "top": $("#game1-blue-top"),
+                "jungle": $("#game1-blue-jungle"),
+                "mid": $("#game1-blue-mid"),
+                "adc": $("#game1-blue-adc"),
+                "support": $("#game1-blue-support")
             }
         },
-        "right": {
-            "name": $("#game1-right-name"),
-            "tag": $("#game1-right-tag"),
-            "score": $("#game1-right-score"),
-            "position": $("#game1-right-position"),
-            "form": $("#game1-right-form"),
+        "red": {
+            "info": {
+                "name": $("#game1-red-name"),
+                "tag": $("#game1-red-tag"),
+                "score": $("#game1-red-score"),
+                "position": $("#game1-red-position"),
+                "form": $("#game1-red-form")
+            },
             "roster": {
-                "top": $("#game1-right-top"),
-                "jungle": $("#game1-right-jungle"),
-                "mid": $("#game1-right-mid"),
-                "adc": $("#game1-right-adc"),
-                "support": $("#game1-right-support")
+                "top": $("#game1-red-top"),
+                "jungle": $("#game1-red-jungle"),
+                "mid": $("#game1-red-mid"),
+                "adc": $("#game1-red-adc"),
+                "support": $("#game1-red-support")
             }
         }
     },
     "game2": {
-        "left": {
-            "name": $("#game2-left-name"),
-            "tag": $("#game2-left-tag"),
-            "score": $("#game2-left-score"),
-            "position": $("#game2-left-position"),
-            "form": $("#game2-left-form"),
+        "blue": {
+            "info": {
+                "name": $("#game2-blue-name"),
+                "tag": $("#game2-blue-tag"),
+                "score": $("#game2-blue-score"),
+                "position": $("#game2-blue-position"),
+                "form": $("#game2-blue-form")
+            },
             "roster": {
-                "top": $("#game2-left-top"),
-                "jungle": $("#game2-left-jungle"),
-                "mid": $("#game2-left-mid"),
-                "adc": $("#game2-left-adc"),
-                "support": $("#game2-left-support")
+                "top": $("#game2-blue-top"),
+                "jungle": $("#game2-blue-jungle"),
+                "mid": $("#game2-blue-mid"),
+                "adc": $("#game2-blue-adc"),
+                "support": $("#game2-blue-support")
             }
         },
-        "right": {
-            "name": $("#game2-right-name"),
-            "tag": $("#game2-right-tag"),
-            "score": $("#game2-right-score"),
-            "position": $("#game2-right-position"),
-            "form": $("#game2-right-form"),
+        "red": {
+            "info": {
+                "name": $("#game2-red-name"),
+                "tag": $("#game2-red-tag"),
+                "score": $("#game2-red-score"),
+                "position": $("#game2-red-position"),
+                "form": $("#game2-red-form")
+            },
             "roster": {
-                "top": $("#game2-right-top"),
-                "jungle": $("#game2-right-jungle"),
-                "mid": $("#game2-right-mid"),
-                "adc": $("#game2-right-adc"),
-                "support": $("#game2-right-support")
+                "top": $("#game2-red-top"),
+                "jungle": $("#game2-red-jungle"),
+                "mid": $("#game2-red-mid"),
+                "adc": $("#game2-red-adc"),
+                "support": $("#game2-red-support")
             }
         }
     },
     "game3": {
-        "left": {
-            "name": $("#game3-left-name"),
-            "tag": $("#game3-left-tag"),
-            "score": $("#game3-left-score"),
-            "position": $("#game3-left-position"),
-            "form": $("#game3-left-form"),
+        "blue": {
+            "info": {
+                "name": $("#game3-blue-name"),
+                "tag": $("#game3-blue-tag"),
+                "score": $("#game3-blue-score"),
+                "position": $("#game3-blue-position"),
+                "form": $("#game3-blue-form")
+            },
             "roster": {
-                "top": $("#game3-left-top"),
-                "jungle": $("#game3-left-jungle"),
-                "mid": $("#game3-left-mid"),
-                "adc": $("#game3-left-adc"),
-                "support": $("#game3-left-support")
+                "top": $("#game3-blue-top"),
+                "jungle": $("#game3-blue-jungle"),
+                "mid": $("#game3-blue-mid"),
+                "adc": $("#game3-blue-adc"),
+                "support": $("#game3-blue-support")
             }
         },
-        "right": {
-            "name": $("#game3-right-name"),
-            "tag": $("#game3-right-tag"),
-            "score": $("#game3-right-score"),
-            "position": $("#game3-right-position"),
-            "form": $("#game3-right-form"),
+        "red": {
+            "info": {
+                "name": $("#game3-red-name"),
+                "tag": $("#game3-red-tag"),
+                "score": $("#game3-red-score"),
+                "position": $("#game3-red-position"),
+                "form": $("#game3-red-form")
+            },
             "roster": {
-                "top": $("#game3-right-top"),
-                "jungle": $("#game3-right-jungle"),
-                "mid": $("#game3-right-mid"),
-                "adc": $("#game3-right-adc"),
-                "support": $("#game3-right-support")
+                "top": $("#game3-red-top"),
+                "jungle": $("#game3-red-jungle"),
+                "mid": $("#game3-red-mid"),
+                "adc": $("#game3-red-adc"),
+                "support": $("#game3-red-support")
             }
         }
     }
@@ -103,7 +115,13 @@ var comingUpReplicant = nodecg.Replicant("coming-up")
             $(".info:visible").slideUp(); // Slide the currently visible game up.
             $comingUpPanels[newVal["next_game"]].slideDown(); // Slide the new game down.
         }
-        $("#timer").countdown(newVal["timer"], function(e) {
+        var date = new Date();
+        function pad (str, max) {
+            str = str.toString();
+            return str.length < max ? pad("0" + str, max) : str;
+        }
+        var time = (date.getFullYear() + "/" + pad(date.getMonth() + 1, 2) + "/" + pad(date.getDate(), 2) + " " + newVal["timer"]);
+        $("#timer").countdown(time, function(e) {
             $(this).text(e.strftime("%H:%M:%S"))
         });
     });
@@ -112,15 +130,12 @@ var teamsReplicant = nodecg.Replicant("scene-teams")
     .on("change", function(oldVal, newVal) { // On change...
         $.each(newVal, function(game, value) { // For each game...
             $.each(value, function(team, value) { // For each team...
-                $comingUpInfo[game][team]["name"].text(value["name"]);
-                $comingUpInfo[game][team]["tag"].text(value["tag"]);
-                $comingUpInfo[game][team]["score"].text(value["score"]);
-                $comingUpInfo[game][team]["position"].text(value["position"]);
-                $comingUpInfo[game][team]["form"].text(value["form"]);
+                $.each(value["info"], function(key, value) { // For each team info...
+                    $comingUpInfo[game][team]["info"][key].text(value);
+                });
                 $.each(value["roster"], function(position, value) { // For each player in the roster...
                     $comingUpInfo[game][team]["roster"][position].text(value);
-                })
-
-            })
-        })
+                });
+            });
+        });
     });
