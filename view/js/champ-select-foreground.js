@@ -53,7 +53,7 @@ var updateTeam = function() {
         });
     });
 };
-var teamReplicant = nodecg.Replicant("scene-teams")
+var teamReplicant = nodecg.Replicant("team-data")
     .on("change", function(oldVal, newVal) { // On change...
         updateTeam()
     });
