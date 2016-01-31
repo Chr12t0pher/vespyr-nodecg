@@ -14,13 +14,6 @@
     "faIcon": "fa-video-camera"
   },
   {
-    "name": "teams-panel",
-    "title": "Teams",
-    "width": 6,
-    "file": "teams.html",
-    "faIcon": "fa-soccer-ball-o"
-  },
-  {
     "name": "scenes-panel",
     "title": "Scene Configuration",
     "width": 6,
