@@ -9,13 +9,14 @@ $ bower install
 ```
 
 ### Dashboard
-![](http://i.imgur.com/j1v3HbB.png)
+![](https://i.imgur.com/jSX6UIz.png)
 
-### View
-![](http://i.imgur.com/qtXuEt8.png)
+### Scenes
+##### Coming Up
+![](http://i.imgur.com/LKt6n1Q.gif)
 
-__Animations__
+##### Champ Select
+![](http://i.imgur.com/B69HnpQ.gif)
 
-![](http://i.imgur.com/2GQL13Z.gif)
-![](http://i.imgur.com/b5DGl0f.gif)
-![](http://i.imgur.com/dyWFWfp.gif) (The animations are smooth, but it's a low framerate gif)
+##### In-Game
+![](http://i.imgur.com/LnMpAVV.gif)
