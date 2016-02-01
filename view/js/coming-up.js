@@ -109,8 +109,12 @@ var $comingUpPanels = {
     "game3": $("#game-3-info")
 };
 
+var $backgroundImg = $("#background-img");
+
 var comingUpReplicant = nodecg.Replicant("coming-up")
     .on("change", function(oldVal, newVal) { // On change...
+        console.log(newVal["colour"]);
+        $backgroundImg.css("background-image",  ('url("images/coming-up/' + newVal["colour"] + 'screen.jpg")'));
         if (!$comingUpPanels[newVal["next_game"]].is(":visible")) { // If the next game has changed...
             $(".info:visible").slideUp(); // Slide the currently visible game up.
             $comingUpPanels[newVal["next_game"]].slideDown(); // Slide the new game down.

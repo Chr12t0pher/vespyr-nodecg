@@ -131,6 +131,7 @@ var $comingUpUpdateBtn = $("#scenes-coming-up-update");
 /** REPLICANTS **/
 var comingUpReplicant = nodecg.Replicant("coming-up")
     .on("change", function(oldVal, newVal) {
+        $("#scenes-coming-up-bg-colour").val(newVal["colour"]);
         $("#scenes-coming-up-next-game").val(newVal["next_game"]);
         $("#scenes-coming-up-timer").val(newVal["timer"]);
     });
@@ -328,6 +329,7 @@ var sceneTeamUpdate = function() {
         }
     };
     comingUpReplicant.value = {
+        "colour": $("#scenes-coming-up-bg-colour").val(),
         "next_game": $("#scenes-coming-up-next-game").val(),
         "timer": $("#scenes-coming-up-timer").val()
     };
