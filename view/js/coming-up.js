@@ -110,11 +110,17 @@ var $comingUpPanels = {
 };
 
 var $backgroundImg = $("#background-img");
+var $foregroundImg = $("#foreground-img");
 
 var comingUpReplicant = nodecg.Replicant("coming-up")
     .on("change", function(oldVal, newVal) { // On change...
         console.log(newVal["colour"]);
-        $backgroundImg.css("background-image",  ('url("images/coming-up/' + newVal["colour"] + 'screen.jpg")'));
+        if (newVal["colour"] == "inhouse") { // If we're doing inhouses.
+            $foregroundImg.css("background-image",  ('url("images/coming-up/inhouse.jpg")')).css("z-index", "100");
+        } else {
+            $backgroundImg.css("background-image",  ('url("images/coming-up/' + newVal["colour"] + 'screen.jpg")'));
+            $foregroundImg.css("background-image",  ('url("images/coming-up/foreground.png")')).css("z-index", "0");
+        }
         if (!$comingUpPanels[newVal["next_game"]].is(":visible")) { // If the next game has changed...
             $(".info:visible").slideUp(); // Slide the currently visible game up.
             $comingUpPanels[newVal["next_game"]].slideDown(); // Slide the new game down.
