@@ -2,13 +2,11 @@ var express = require("express"),
     app = express();
 
 module.exports = function(nodecg) {
-    var OscReceiver = require("osc-receiver")
-        , receiver = new OscReceiver();
-
-    receiver.bind(8338);
-
-    receiver.on("/lol", function() {
-        nodecg.sendMessage("lolEvent", arguments[1]);
+    app.post("/vespyr/keypress", function(req, res) {
+        res.send("");
+        if (req.body.token == "nsa-cant-hack-dis" && (["A", "Tab"].indexOf(req.body.key) >= 0)) {
+            nodecg.sendMessage("lolEvent", req.body.key);
+        }
     });
 
     nodecg.mount(app);
