@@ -49,6 +49,28 @@ body {
 }
 
 /** SCOREBOARD **/
+#bottom-left {
+    position: absolute;
+    margin-top: 866px;
+    margin-left: 0px;
+    width: 387px;
+    height: 214px;
+
+    background-image: url("../images/in-game/bottom-left.png");
+}
+
+#bottom-center {
+    position: absolute;
+    margin-top: 816px;
+    margin-left: 526px;
+    width: 878px;
+    height: 264px;
+
+    background-image: url("../images/in-game/bottom-center.png");
+
+    z-index: -1;
+}
+
 #bottom-center > div {
     position: absolute;
 
@@ -57,24 +79,24 @@ body {
     text-align: center;
 }
 #bottom-center-left-text-upper {
-    margin-top: 836px;
-    margin-left: 574px;
+    margin-top: 20px;
+    margin-left: 50px;
     width: 349px;
     height: 32px;
 
     font-size: 30px;
 }
 #bottom-center-left-text-lower {
-    margin-top: 867px;
-    margin-left: 574px;
+    margin-top: 50px;
+    margin-left: 50px;
     width: 349px;
     height: 32px;
 
     font-size: 30px;
 }
 #bottom-center-right-text {
-    margin-top: 839px;
-    margin-left: 1003px;
+    margin-top: 22px;
+    margin-left: 475px;
     width: 349px;
     height: 51px;
 

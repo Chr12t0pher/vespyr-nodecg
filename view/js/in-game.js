@@ -44,3 +44,15 @@ var inGameReplicant = nodecg.Replicant("in-game")
         $inGameTexts["left"]["bottom"].text(newVal["left"]["bottom"]);
         $inGameTexts["right"].text(newVal["right"]);
     });
+
+var $scoreBoard = $("#score");
+var $bottomLeft = $("#bottom-left");
+var $bottomCenter = $("#bottom-center");
+
+nodecg.listenFor("lolEvent", function(key) {
+    if (key == "A") { // If teamfight.
+        ($scoreBoard.is(":visible")) ? $scoreBoard.hide() : $scoreBoard.show(); // Toggle score.
+        ($bottomLeft.is(":visible")) ? $bottomLeft.hide() : $bottomLeft.show(); // Toggle info box.
+        ($bottomCenter.is(":visible")) ? $bottomCenter.hide() : $bottomCenter.show(); // Toggle text bar.
+    }
+});
