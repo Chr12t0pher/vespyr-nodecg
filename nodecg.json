@@ -7,5 +7,8 @@
         "Chris Stevens <contact@cstevens.biz>"
     ],
     "homepage": "http://cstevens.biz",
-    "license": "Copyright 2016 Chris Stevens"
+    "license": "Copyright 2016 Chris Stevens",
+    "extension": {
+      "path": "extension.js"
+    }
 }
