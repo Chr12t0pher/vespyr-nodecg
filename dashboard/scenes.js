@@ -531,6 +531,7 @@ $(".bootswitch").bootstrapSwitch({
     "onColor": "success"
 });
 
+
 /**
  ###########
  # IN-GAME #
@@ -579,3 +580,50 @@ $inGameResetBtn.click(function() {
     inGameUpdate();
 });
 
+
+/**
+ ############
+ # ANALYSIS #
+ ############
+ */
+
+var player;
+window.onYouTubeIframeAPIReady = function() {
+    player = new YT.Player("player", {
+        height: "452",
+        width: "804",
+        playerVars: {
+            autoplay: 1,
+            modestbranding: 1,
+            related: 0
+        },
+        events: {
+            onStateChange: onPlayerStateChange
+        }
+    });
+};
+
+/** INPUTS **/
+var $videoIdInput = $("#analysis-video-id");
+var $videoIdBtn = $("#analysis-video-id-btn");
+
+$videoIdBtn.click(function() {
+    player.loadVideoById({
+        videoId: $videoIdInput.val(),
+        suggestedQuality: "hd720"
+    });
+    player.pauseVideo();
+    nodecg.sendMessage("analysis-video", $videoIdInput.val())
+});
+
+function onPlayerStateChange(event) {
+    if (event.data === 1) {
+        nodecg.sendMessage("analysis-play", {
+            "speed": player.getPlaybackRate()
+        });
+    } else if (event.data === 2) {
+        nodecg.sendMessage("analysis-pause", {
+            "time": player.getCurrentTime()
+        });
+    }
+}
