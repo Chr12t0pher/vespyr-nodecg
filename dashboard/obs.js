@@ -97,7 +97,7 @@ $.each($sceneInputs, function(scene, value) {
 });
 
 $("#obs-ip-btn").click(function() {
-    if(/chrom(e|ium)/.test(navigator.userAgent.toLowerCase())) {
+    if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
        alert("OBS control to remote hosts does not work in Chrome - please use Firefox or Internet Explorer/Edge." +
            " If you're connecting to 127.0.0.1 or localhost disregard this message.")
     }
