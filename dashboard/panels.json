@@ -19,5 +19,12 @@
     "width": 6,
     "file": "scenes.html",
     "faIcon": "fa-cog"
+  },
+  {
+    "name": "strawpoll-panel",
+    "title": "Strawpoll",
+    "width": 2,
+    "file": "strawpoll.html",
+    "faIcon": "fa-question"
   }
 ]

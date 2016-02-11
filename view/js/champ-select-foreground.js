@@ -63,7 +63,6 @@ var comingUpReplicant = nodecg.Replicant("coming-up")
     });
 
 
-
 var champsReplicant = nodecg.Replicant("champ-select")
     .on("change", function(oldVal, newVal) { // If the champs variable changes...
         $.each(newVal, function(team, value) {
@@ -100,4 +99,32 @@ nodecg.listenFor("champ-picked", function(value) {
             });
         setTimeout(function() { next(); }, 15000);
     });
+});
+
+var $poll = $("#poll");
+var $pollBar = {"blue": $("#poll-bar-blue"), "red": $("#poll-bar-red")};
+var $pollValues = {"blue": $("#poll-blue-percent"), "red": $("#poll-red-percent")};
+
+var strawpollReplicant = nodecg.Replicant("strawpoll")
+    .on("change", function(oldVal, newVal) {
+        console.log(newVal);
+        if (isNaN(newVal[0])) { console.log(newVal)} // If undefined, return as we don't need to do anything - default is 0% 0%.
+        else {
+            var total = newVal[0] + newVal[1];
+            if (total == 0) { total = 1 } // Set total to 1 if it's 0 so we don't get divide by zero errors.
+            var percentage = [Math.round((newVal[0] / total) * 100), Math.round((newVal[1] / total) * 100)];
+            $pollBar["blue"].animate({width: percentage[0] + "%"});
+            $pollBar["red"].animate({width: percentage[1] + "%"});
+            $pollValues["blue"].text(percentage[0] + "%");
+            $pollValues["red"].text(percentage[1] + "%");
+        }
+    });
+
+nodecg.listenFor("strawpoll-start", function(data) {
+    $("#poll-url").text("strawpoll.me/" + data);
+    $poll.show()
+});
+
+nodecg.listenFor("strawpoll-stop", function() {
+    $poll.hide();
 });
