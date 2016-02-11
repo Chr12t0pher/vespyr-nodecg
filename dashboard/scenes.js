@@ -612,6 +612,7 @@ $videoIdBtn.click(function() {
         videoId: $videoIdInput.val(),
         suggestedQuality: "hd720"
     });
+    player.playVideo();
     player.pauseVideo();
     nodecg.sendMessage("analysis-video", $videoIdInput.val())
 });
@@ -625,5 +626,19 @@ function onPlayerStateChange(event) {
         nodecg.sendMessage("analysis-pause", {
             "time": player.getCurrentTime()
         });
+    } else if (event.data === 3) {
+        nodecg.sendMessage("analysis-pause", {
+            "time": player.getCurrentTime()
+        });
     }
 }
+
+window.addEventListener("message", function(event) {
+    event = JSON.parse(event.data);
+    if (player.getPlayerState() === 2 && event["event"] == "infoDelivery") { // If paused.
+        nodecg.sendMessage("analysis-pause", {
+            "time": player.getCurrentTime()
+        });
+    }
+}, false);
+

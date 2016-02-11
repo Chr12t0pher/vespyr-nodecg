@@ -32,6 +32,7 @@ nodecg.listenFor("analysis-video", function(data) {
         videoId: data,
         suggestedQuality: "hd720"
     });
-    player.pauseVideo();
+    player.playVideo();
+    setTimeout(player.pauseVideo(), 100);
 });
 
