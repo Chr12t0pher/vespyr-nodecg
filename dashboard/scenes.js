@@ -127,6 +127,7 @@ var $comingUpInfo = {
     }
 };
 var $comingUpUpdateBtn = $("#scenes-coming-up-update");
+var $comingUpResetBtn = $("#scenes-coming-up-reset");
 
 /** REPLICANTS **/
 var comingUpReplicant = nodecg.Replicant("coming-up")
@@ -155,17 +156,25 @@ $(document).ready(function() {
     $.ajaxSetup({
         async: false
     });
-    var qualifierTop;
-    $.getJSON("http://app.vespyrleague.com/api/tournaments/19", function(response) {
-        qualifierTop = new Bloodhound({
+    var typePremier;
+    $.getJSON("http://app.vespyrleague.com/api/tournaments/48", function(response) {
+        typePremier = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace("team_name"),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             local: response
         });
     });
-    var qualifierBottom;
-    $.getJSON("http://app.vespyrleague.com/api/tournaments/20", function(response) {
-        qualifierBottom = new Bloodhound({
+    var typeMinorA;
+    $.getJSON("http://app.vespyrleague.com/api/tournaments/49", function(response) {
+        typeMinorA = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace("team_name"),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: response
+        });
+    });
+    var typeMinorB;
+    $.getJSON("http://app.vespyrleague.com/api/tournaments/50", function(response) {
+        typeMinorB = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace("team_name"),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             local: response
@@ -175,22 +184,30 @@ $(document).ready(function() {
         async: true
     });
     $.each($comingUpInfo, function(game, value) { // For each game...
+        console.log(typePremier, typeMinorA, typeMinorB);
         $.each(value, function(team, value) { // For each team...
             value["info"]["name"].typeahead({
                 highlight: true
             }, {
-                name: "qualifier-top",
+                name: "premier",
                 display: "team_name",
-                source: qualifierTop,
+                source: typePremier,
                 templates: {
-                    header: '<h4 class="list-group-item-heading league">Higher Qualifiers</h4>'
+                    header: '<h4 class="list-group-item-heading league">Premier</h4>'
                 }
             }, {
-                name: "qualifier-bottom",
+                name: "minor-a",
                 display: "team_name",
-                source: qualifierBottom,
+                source: typeMinorA,
                 templates: {
-                    header: '<h4 class="list-group-item-heading league">Lower Qualifiers</h4>'
+                    header: '<h4 class="list-group-item-heading league">Minor A</h4>'
+                }
+            }, {
+                name: "minor-b",
+                display: "team_name",
+                source: typeMinorB,
+                templates: {
+                    header: '<h4 class="list-group-item-heading league">Minor B</h4>'
                 }
             }).bind("typeahead:select", function (ev, suggestion) {
                 $comingUpInfo[game][team]["info"]["tag"].val(suggestion["team_tag"]);
@@ -223,116 +240,154 @@ $(document).ready(function() {
 
 
 /** UPDATING **/
-var sceneTeamUpdate = function() {
-    sceneTeamReplicant.value = {
-        "game1": {
+var sceneTeamUpdate = function(game) {
+    if (game !== undefined) { // If we're updating a specific game.
+        var replicant = sceneTeamReplicant.value;
+        replicant[game] = {
             "blue": {
                 "info": {
-                    "name": $comingUpInfo["game1"]["blue"]["info"]["name"].val(),
-                    "tag": $comingUpInfo["game1"]["blue"]["info"]["tag"].val(),
-                    "score": $comingUpInfo["game1"]["blue"]["info"]["score"].val(),
-                    "position": $comingUpInfo["game1"]["blue"]["info"]["position"].val(),
-                    "form": $comingUpInfo["game1"]["blue"]["info"]["form"].val()
+                    "name": $comingUpInfo[game]["blue"]["info"]["name"].val(),
+                    "tag": $comingUpInfo[game]["blue"]["info"]["tag"].val(),
+                    "score": $comingUpInfo[game]["blue"]["info"]["score"].val(),
+                    "position": $comingUpInfo[game]["blue"]["info"]["position"].val(),
+                    "form": $comingUpInfo[game]["blue"]["info"]["form"].val()
                 },
                 "roster": {
-                    "top": $comingUpInfo["game1"]["blue"]["roster"]["top"].val(),
-                    "jungle": $comingUpInfo["game1"]["blue"]["roster"]["jungle"].val(),
-                    "mid": $comingUpInfo["game1"]["blue"]["roster"]["mid"].val(),
-                    "adc": $comingUpInfo["game1"]["blue"]["roster"]["adc"].val(),
-                    "support": $comingUpInfo["game1"]["blue"]["roster"]["support"].val()
+                    "top": $comingUpInfo[game]["blue"]["roster"]["top"].val(),
+                    "jungle": $comingUpInfo[game]["blue"]["roster"]["jungle"].val(),
+                    "mid": $comingUpInfo[game]["blue"]["roster"]["mid"].val(),
+                    "adc": $comingUpInfo[game]["blue"]["roster"]["adc"].val(),
+                    "support": $comingUpInfo[game]["blue"]["roster"]["support"].val()
                 }
             },
             "red": {
                 "info": {
-                    "name": $comingUpInfo["game1"]["red"]["info"]["name"].val(),
-                    "tag": $comingUpInfo["game1"]["red"]["info"]["tag"].val(),
-                    "score": $comingUpInfo["game1"]["red"]["info"]["score"].val(),
-                    "position": $comingUpInfo["game1"]["red"]["info"]["position"].val(),
-                    "form": $comingUpInfo["game1"]["red"]["info"]["form"].val()
+                    "name": $comingUpInfo[game]["red"]["info"]["name"].val(),
+                    "tag": $comingUpInfo[game]["red"]["info"]["tag"].val(),
+                    "score": $comingUpInfo[game]["red"]["info"]["score"].val(),
+                    "position": $comingUpInfo[game]["red"]["info"]["position"].val(),
+                    "form": $comingUpInfo[game]["red"]["info"]["form"].val()
                 },
                 "roster": {
-                    "top": $comingUpInfo["game1"]["red"]["roster"]["top"].val(),
-                    "jungle": $comingUpInfo["game1"]["red"]["roster"]["jungle"].val(),
-                    "mid": $comingUpInfo["game1"]["red"]["roster"]["mid"].val(),
-                    "adc": $comingUpInfo["game1"]["red"]["roster"]["adc"].val(),
-                    "support": $comingUpInfo["game1"]["red"]["roster"]["support"].val()
+                    "top": $comingUpInfo[game]["red"]["roster"]["top"].val(),
+                    "jungle": $comingUpInfo[game]["red"]["roster"]["jungle"].val(),
+                    "mid": $comingUpInfo[game]["red"]["roster"]["mid"].val(),
+                    "adc": $comingUpInfo[game]["red"]["roster"]["adc"].val(),
+                    "support": $comingUpInfo[game]["red"]["roster"]["support"].val()
                 }
             }
-        },
-        "game2": {
-            "blue": {
-                "info": {
-                    "name": $comingUpInfo["game2"]["blue"]["info"]["name"].val(),
-                    "tag": $comingUpInfo["game2"]["blue"]["info"]["tag"].val(),
-                    "score": $comingUpInfo["game2"]["blue"]["info"]["score"].val(),
-                    "position": $comingUpInfo["game2"]["blue"]["info"]["position"].val(),
-                    "form": $comingUpInfo["game2"]["blue"]["info"]["form"].val()
+        };
+    } else {
+        sceneTeamReplicant.value = {
+            "game1": {
+                "blue": {
+                    "info": {
+                        "name": $comingUpInfo["game1"]["blue"]["info"]["name"].val(),
+                        "tag": $comingUpInfo["game1"]["blue"]["info"]["tag"].val(),
+                        "score": $comingUpInfo["game1"]["blue"]["info"]["score"].val(),
+                        "position": $comingUpInfo["game1"]["blue"]["info"]["position"].val(),
+                        "form": $comingUpInfo["game1"]["blue"]["info"]["form"].val()
+                    },
+                    "roster": {
+                        "top": $comingUpInfo["game1"]["blue"]["roster"]["top"].val(),
+                        "jungle": $comingUpInfo["game1"]["blue"]["roster"]["jungle"].val(),
+                        "mid": $comingUpInfo["game1"]["blue"]["roster"]["mid"].val(),
+                        "adc": $comingUpInfo["game1"]["blue"]["roster"]["adc"].val(),
+                        "support": $comingUpInfo["game1"]["blue"]["roster"]["support"].val()
+                    }
                 },
-                "roster": {
-                    "top": $comingUpInfo["game2"]["blue"]["roster"]["top"].val(),
-                    "jungle": $comingUpInfo["game2"]["blue"]["roster"]["jungle"].val(),
-                    "mid": $comingUpInfo["game2"]["blue"]["roster"]["mid"].val(),
-                    "adc": $comingUpInfo["game2"]["blue"]["roster"]["adc"].val(),
-                    "support": $comingUpInfo["game2"]["blue"]["roster"]["support"].val()
+                "red": {
+                    "info": {
+                        "name": $comingUpInfo["game1"]["red"]["info"]["name"].val(),
+                        "tag": $comingUpInfo["game1"]["red"]["info"]["tag"].val(),
+                        "score": $comingUpInfo["game1"]["red"]["info"]["score"].val(),
+                        "position": $comingUpInfo["game1"]["red"]["info"]["position"].val(),
+                        "form": $comingUpInfo["game1"]["red"]["info"]["form"].val()
+                    },
+                    "roster": {
+                        "top": $comingUpInfo["game1"]["red"]["roster"]["top"].val(),
+                        "jungle": $comingUpInfo["game1"]["red"]["roster"]["jungle"].val(),
+                        "mid": $comingUpInfo["game1"]["red"]["roster"]["mid"].val(),
+                        "adc": $comingUpInfo["game1"]["red"]["roster"]["adc"].val(),
+                        "support": $comingUpInfo["game1"]["red"]["roster"]["support"].val()
+                    }
                 }
             },
-            "red": {
-                "info": {
-                    "name": $comingUpInfo["game2"]["red"]["info"]["name"].val(),
-                    "tag": $comingUpInfo["game2"]["red"]["info"]["tag"].val(),
-                    "score": $comingUpInfo["game2"]["red"]["info"]["score"].val(),
-                    "position": $comingUpInfo["game2"]["red"]["info"]["position"].val(),
-                    "form": $comingUpInfo["game2"]["red"]["info"]["form"].val()
+            "game2": {
+                "blue": {
+                    "info": {
+                        "name": $comingUpInfo["game2"]["blue"]["info"]["name"].val(),
+                        "tag": $comingUpInfo["game2"]["blue"]["info"]["tag"].val(),
+                        "score": $comingUpInfo["game2"]["blue"]["info"]["score"].val(),
+                        "position": $comingUpInfo["game2"]["blue"]["info"]["position"].val(),
+                        "form": $comingUpInfo["game2"]["blue"]["info"]["form"].val()
+                    },
+                    "roster": {
+                        "top": $comingUpInfo["game2"]["blue"]["roster"]["top"].val(),
+                        "jungle": $comingUpInfo["game2"]["blue"]["roster"]["jungle"].val(),
+                        "mid": $comingUpInfo["game2"]["blue"]["roster"]["mid"].val(),
+                        "adc": $comingUpInfo["game2"]["blue"]["roster"]["adc"].val(),
+                        "support": $comingUpInfo["game2"]["blue"]["roster"]["support"].val()
+                    }
                 },
-                "roster": {
-                    "top": $comingUpInfo["game2"]["red"]["roster"]["top"].val(),
-                    "jungle": $comingUpInfo["game2"]["red"]["roster"]["jungle"].val(),
-                    "mid": $comingUpInfo["game2"]["red"]["roster"]["mid"].val(),
-                    "adc": $comingUpInfo["game2"]["red"]["roster"]["adc"].val(),
-                    "support": $comingUpInfo["game2"]["red"]["roster"]["support"].val()
-                }
-            }
-        },
-        "game3": {
-            "blue": {
-                "info": {
-                    "name": $comingUpInfo["game3"]["blue"]["info"]["name"].val(),
-                    "tag": $comingUpInfo["game3"]["blue"]["info"]["tag"].val(),
-                    "score": $comingUpInfo["game3"]["blue"]["info"]["score"].val(),
-                    "position": $comingUpInfo["game3"]["blue"]["info"]["position"].val(),
-                    "form": $comingUpInfo["game3"]["blue"]["info"]["form"].val()
-                },
-                "roster": {
-                    "top": $comingUpInfo["game3"]["blue"]["roster"]["top"].val(),
-                    "jungle": $comingUpInfo["game3"]["blue"]["roster"]["jungle"].val(),
-                    "mid": $comingUpInfo["game3"]["blue"]["roster"]["mid"].val(),
-                    "adc": $comingUpInfo["game3"]["blue"]["roster"]["adc"].val(),
-                    "support": $comingUpInfo["game3"]["blue"]["roster"]["support"].val()
+                "red": {
+                    "info": {
+                        "name": $comingUpInfo["game2"]["red"]["info"]["name"].val(),
+                        "tag": $comingUpInfo["game2"]["red"]["info"]["tag"].val(),
+                        "score": $comingUpInfo["game2"]["red"]["info"]["score"].val(),
+                        "position": $comingUpInfo["game2"]["red"]["info"]["position"].val(),
+                        "form": $comingUpInfo["game2"]["red"]["info"]["form"].val()
+                    },
+                    "roster": {
+                        "top": $comingUpInfo["game2"]["red"]["roster"]["top"].val(),
+                        "jungle": $comingUpInfo["game2"]["red"]["roster"]["jungle"].val(),
+                        "mid": $comingUpInfo["game2"]["red"]["roster"]["mid"].val(),
+                        "adc": $comingUpInfo["game2"]["red"]["roster"]["adc"].val(),
+                        "support": $comingUpInfo["game2"]["red"]["roster"]["support"].val()
+                    }
                 }
             },
-            "red": {
-                "info": {
-                    "name": $comingUpInfo["game3"]["red"]["info"]["name"].val(),
-                    "tag": $comingUpInfo["game3"]["red"]["info"]["tag"].val(),
-                    "score": $comingUpInfo["game3"]["red"]["info"]["score"].val(),
-                    "position": $comingUpInfo["game3"]["red"]["info"]["position"].val(),
-                    "form": $comingUpInfo["game3"]["red"]["info"]["form"].val()
+            "game3": {
+                "blue": {
+                    "info": {
+                        "name": $comingUpInfo["game3"]["blue"]["info"]["name"].val(),
+                        "tag": $comingUpInfo["game3"]["blue"]["info"]["tag"].val(),
+                        "score": $comingUpInfo["game3"]["blue"]["info"]["score"].val(),
+                        "position": $comingUpInfo["game3"]["blue"]["info"]["position"].val(),
+                        "form": $comingUpInfo["game3"]["blue"]["info"]["form"].val()
+                    },
+                    "roster": {
+                        "top": $comingUpInfo["game3"]["blue"]["roster"]["top"].val(),
+                        "jungle": $comingUpInfo["game3"]["blue"]["roster"]["jungle"].val(),
+                        "mid": $comingUpInfo["game3"]["blue"]["roster"]["mid"].val(),
+                        "adc": $comingUpInfo["game3"]["blue"]["roster"]["adc"].val(),
+                        "support": $comingUpInfo["game3"]["blue"]["roster"]["support"].val()
+                    }
                 },
-                "roster": {
-                    "top": $comingUpInfo["game3"]["red"]["roster"]["top"].val(),
-                    "jungle": $comingUpInfo["game3"]["red"]["roster"]["jungle"].val(),
-                    "mid": $comingUpInfo["game3"]["red"]["roster"]["mid"].val(),
-                    "adc": $comingUpInfo["game3"]["red"]["roster"]["adc"].val(),
-                    "support": $comingUpInfo["game3"]["red"]["roster"]["support"].val()
+                "red": {
+                    "info": {
+                        "name": $comingUpInfo["game3"]["red"]["info"]["name"].val(),
+                        "tag": $comingUpInfo["game3"]["red"]["info"]["tag"].val(),
+                        "score": $comingUpInfo["game3"]["red"]["info"]["score"].val(),
+                        "position": $comingUpInfo["game3"]["red"]["info"]["position"].val(),
+                        "form": $comingUpInfo["game3"]["red"]["info"]["form"].val()
+                    },
+                    "roster": {
+                        "top": $comingUpInfo["game3"]["red"]["roster"]["top"].val(),
+                        "jungle": $comingUpInfo["game3"]["red"]["roster"]["jungle"].val(),
+                        "mid": $comingUpInfo["game3"]["red"]["roster"]["mid"].val(),
+                        "adc": $comingUpInfo["game3"]["red"]["roster"]["adc"].val(),
+                        "support": $comingUpInfo["game3"]["red"]["roster"]["support"].val()
+                    }
                 }
             }
-        }
-    };
-    comingUpReplicant.value = {
-        "colour": $("#scenes-coming-up-bg-colour").val(),
-        "next_game": $("#scenes-coming-up-next-game").val(),
-        "timer": $("#scenes-coming-up-timer").val()
-    };
+        };
+        comingUpReplicant.value = {
+            "colour": $("#scenes-coming-up-bg-colour").val(),
+            "next_game": $("#scenes-coming-up-next-game").val(),
+            "timer": $("#scenes-coming-up-timer").val()
+        };
+    }
     $(".scenes-coming-up-on-change").parent().removeClass("has-warning"); // Remove the warning on the input.
 };
 
@@ -347,6 +402,41 @@ $(".scenes-coming-up-on-change").bind("change paste keyup", function(e) { // If 
 
 $comingUpUpdateBtn.click(function() {
     sceneTeamUpdate();
+});
+
+$comingUpResetBtn.click(function() {
+    $.each($comingUpInfo, function(game, value) { // For each game...
+        $.each(value, function(team, value) { // For each team...
+            $.each(value["info"], function(key, value) { // For each of the team info...
+                value.val("");
+            });
+            $.each(value["roster"], function(position, value) { // For each player in the roster...
+                value.val("");
+            });
+        });
+    });
+    $("#scenes-coming-up-bg-colour").val("blue");
+    $("#scenes-coming-up-next-game").val("game1");
+    $("#scenes-coming-up-timer").val("19:00:00");
+    sceneTeamUpdate();
+});
+
+$(".scenes-coming-up-game-update").click(function() {
+    var game = $(this).data("game");
+    sceneTeamUpdate(game)
+});
+
+$(".scenes-coming-up-game-reset").click(function() {
+    var game = $(this).data("game");
+    $.each($comingUpInfo[game], function(team, value) { // For each team...
+        $.each(value["info"], function(key, value) { // For each of the team info...
+            value.val("");
+        });
+        $.each(value["roster"], function(position, value) { // For each player in the roster...
+            value.val("");
+        });
+    });
+    sceneTeamUpdate()
 });
 
 /** SWITCH SIDES **/
