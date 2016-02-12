@@ -39,8 +39,10 @@ module.exports = function(nodecg) {
 
     nodecg.listenFor("strawpoll-start", function(data) {
         stop = false;
+        var i = 0;
         function checkResults() {
-            if (!stop) {
+            if (!stop && i <= 600) { // Update for 10 minutes max.
+                i += 1;
                 var stream = get(data)
                     .pipe(concat(function(poll) {
                         poll = JSON.parse(poll);

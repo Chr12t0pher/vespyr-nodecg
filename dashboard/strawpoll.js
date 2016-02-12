@@ -5,6 +5,7 @@ var $strawpollUrl = $("#strawpoll-url");
 var $strawpollToggle = $("#strawpoll-toggle");
 
 $strawpollCreate.click(function() {
+    if ($strawpollTeams["blue"].val() == "" || $strawpollTeams["red"].val() == "") { return }
     nodecg.sendMessage("strawpoll-create", [$strawpollTeams["blue"].val(), $strawpollTeams["red"].val()], function(id) {
         $strawpollId.val(id);
         $strawpollUrl.val("http://strawpoll.me/" + id);
