@@ -1,0 +1,6 @@
+{
+  "name": "vespyr",
+  "dependencies": {
+    "hyperquest": "1.2.0"
+  }
+}

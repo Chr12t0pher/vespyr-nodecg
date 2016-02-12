@@ -1,12 +1,12 @@
 {
     "name": "vespyr",
-    "version": "0.0.1-prealpha",
+    "version": "0.2.0",
     "nodecgDependency": "~0.6.2",
     "description": "Stream controller for Vespyr",
     "authors": [
-        "Chris Stevens <contact@cstevens.biz>"
+        "Chris Stevens <contact@cstevens.biz> (http://cstevens.biz)"
     ],
-    "homepage": "http://cstevens.biz",
+    "homepage": "https://vespyrleague.com",
     "license": "Copyright 2016 Chris Stevens",
     "extension": {
       "path": "extension.js"
