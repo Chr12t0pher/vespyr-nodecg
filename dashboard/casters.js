@@ -1,21 +1,20 @@
 'use strict';
 
 /** INPUTS/BUTTONS **/
-var casterFields = [
+var $casterFields = [
     $("#caster-input1"),
-    $("#caster-input2"),
-    $("#caster-input3")
+    $("#caster-input2")
 ];
 
-var $updateBtn = $("#caster-update");
+var $castersUpdateBtn = $("#caster-update");
 
 /** REPLICANTS **/
-var casters = nodecg.Replicant("casters", {defaultValue: ["", "", ""]})
+var casters = nodecg.Replicant("casters", {defaultValue: ["", ""]})
     .on("change", function(oldVal, newVal) {
         newVal.forEach(function(name, i) { // Update fields in dashboard.
-            casterFields[i].val(name);
+            $casterFields[i].val(name);
         });
-        $updateBtn.prop("disabled", true).removeClass("btn-primary"); // Disable update button.
+        $castersUpdateBtn.prop("disabled", true).removeClass("btn-primary"); // Disable update button.
     });
 
 
@@ -24,11 +23,11 @@ $(document).ready(function() {
     var casters = new Bloodhound({ // Define Caster names.
         datumTokenizer: Bloodhound.tokenizers.whitespace,
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-        local: ["GoodBroJoe", "Archarom", "Benvarmeren", "Darthlaser", "Grangg", "Void"]
+        local: ["GoodBroJoe", "Archarom", "Benvarmeren", "Darthlaser", "Grangg", "Void", "Aladar"]
     });
 
-    $(casterFields).each(function() { // Register the Typeahead inputs.
-        $(this).typeahead({
+    $.each($casterFields, function(key, value) { // Register the Typeahead inputs.
+        value.typeahead({
             hint: true,
             highlight: true,
             minLength: 0
@@ -41,12 +40,16 @@ $(document).ready(function() {
 
 
 /*** UPDATING ***/
-$(casterFields).each(function() {
-    $(this).bind("change paste keyup", function () { // If any of the caster names are changed...
-        $updateBtn.prop("disabled", false).addClass("btn-primary"); // Enable the update button.
-    });
+$castersUpdateBtn.click(function() { // Update replicant when update button is clicked.
+    casters.value = [$casterFields[0].val(), $casterFields[1].val()];
 });
 
-$updateBtn.click(function() { // Update replicant when update button is clicked.
-    casters.value = [casterFields[0].val(), casterFields[1].val(), casterFields[2].val()];
+$(".casters-on-change").bind("change paste keyup", function(e) { // If any of the champion names are changed...
+    if(e.keyCode == 13) {
+        casters.value = [$casterFields[0].val(), $casterFields[1].val()]; // Update if enter key.
+        $(".casters-on-change").parent().removeClass("has-warning")
+    } else { // Else somethings changed.
+        $castersUpdateBtn.prop("disabled", false).addClass("btn-primary"); // Enable the update button.
+        $(this).parent().addClass("has-warning"); // Colour the input to show it hasn't been updated.
+    }
 });

@@ -184,12 +184,28 @@ body {
     left: 242px;
 }
 
+/** MIDDLE STUFF **/
 #middle {
     position: absolute;
     width: 1174px;
     height: 698px;
     margin-top: 165px;
     margin-left: 372px;
+}
+
+#casters {
+    position: absolute;
+    width: 1142px;
+    height: 48px;
+    margin-top: 70px;
+    margin-left: 16px;
+
+    border-bottom: #F8FCFD solid 2px;
+
+    font-family: spiegelcdotregular, sans-serif;
+    color: #F8FCFD;
+    font-size: 40px;
+    text-align: center;
 }
 
 #poll {
@@ -200,7 +216,7 @@ body {
     margin-top: 572px;
     margin-left: 16px;
 
-    border-top: #F8FCFD solid 1px;
+    border-top: #F8FCFD solid 2px;
 }
 #poll > div { position: absolute; }
 #poll-title, #poll-url {

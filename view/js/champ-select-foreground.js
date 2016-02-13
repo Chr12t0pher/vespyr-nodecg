@@ -13,6 +13,13 @@ var $teamBans = {
 };
 
 /** REPLICANTS **/
+var casters = nodecg.Replicant("casters")
+    .on("change", function(oldVal, newVal) {
+        var string = "SHOUTCASTERS: " + newVal[0];
+        if (newVal[1] != "") { string += (" & " + newVal[1])}
+        $("#casters").text(string);
+    });
+
 var updateTeam = function() {
     if(!comingUpReplicant.value) { // If the coming up replicant hasn't loaded yet, return.
         return
