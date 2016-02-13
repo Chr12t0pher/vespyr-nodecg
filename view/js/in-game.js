@@ -56,3 +56,18 @@ nodecg.listenFor("lolEvent", function(key) {
         ($bottomCenter.is(":visible")) ? $bottomCenter.hide() : $bottomCenter.show(); // Toggle text bar.
     }
 });
+
+function cycleImages() {
+    var $current = $("#bottom-left-images .active");
+    var $next = ($current.next().length > 0) ? $current.next() : $("#bottom-left-images img:first");
+    $current.fadeOut(1000, function() {
+        $current.removeClass("active"); // Reset z-index and unhide.
+        $next.fadeIn(1000, function() {
+            $next.addClass("active"); // Show next image
+        });
+    })
+}
+
+$(document).ready(function() {
+    setInterval("cycleImages()", 8000);
+});

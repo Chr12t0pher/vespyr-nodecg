@@ -58,6 +58,19 @@ body {
 
     background-image: url("../images/in-game/bottom-left.png");
 }
+#bottom-left-images {
+    position: absolute;
+    margin-top: 102px;
+    margin-left: 7px;
+    width: 294px;
+    height: 106px;
+}
+#bottom-left-images img {
+    position: absolute;
+    display: none;
+}
+#bottom-left-images img.active {display: block; }
+
 
 #bottom-center {
     position: absolute;
