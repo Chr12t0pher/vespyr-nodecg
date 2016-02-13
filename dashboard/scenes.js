@@ -219,8 +219,8 @@ $(document).ready(function() {
         });
     });
     var updateNames = function(game, team, suggestion) {
-        var teamId = suggestion["team_id"];
-        $.getJSON("http://app.vespyrleague.com/api/tournaments/19/teams/" + teamId, function(response) { // Get team roster.
+        var participantId = suggestion["participant_id"];
+        $.getJSON("http://app.vespyrleague.com/api/rosters/" + participantId, function(response) { // Get team roster.
             $.each(response, function(i, value) { // For each player in roster...
                 if (value["role"] == "Toplane") { // If the player is the top laner...
                     $comingUpInfo[game][team]["roster"]["top"].val(value["summoner_name"]); // Update the top name.
