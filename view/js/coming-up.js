@@ -109,16 +109,18 @@ var $comingUpPanels = {
     "game3": $("#game-3-info")
 };
 
-var $backgroundImg = $("#background-img");
+var $backgroundVid = $("#background-vid");
+var $backgroundVidSource = $("#background-vid source");
 var $foregroundImg = $("#foreground-img");
 
 var comingUpReplicant = nodecg.Replicant("coming-up")
     .on("change", function(oldVal, newVal) { // On change...
-        console.log(newVal["colour"]);
         if (newVal["colour"] == "inhouse") { // If we're doing inhouses.
             $foregroundImg.css("background-image",  ('url("images/coming-up/inhouse.jpg")')).css("z-index", "100");
         } else {
-            $backgroundImg.css("background-image",  ('url("images/coming-up/' + newVal["colour"] + 'screen.jpg")'));
+            $backgroundVid.attr("poster", ("images/coming-up/background/" + newVal["colour"] + ".png")); // Buffering image.
+            $backgroundVidSource.attr("src", ("videos/coming-up/" + newVal["colour"] + ".mp4")); // Actual video.
+            $backgroundVid.load(); // Load it.
             $foregroundImg.css("background-image",  ('url("images/coming-up/foreground.png")')).css("z-index", "0");
         }
         if (!$comingUpPanels[newVal["next_game"]].is(":visible")) { // If the next game has changed...
