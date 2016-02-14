@@ -126,3 +126,19 @@ body {
 #red-team-ban3 {
     left: 240px;
 }
+
+/** MIDDLE **/
+#middle {
+    position: absolute;
+    width: 1174px;
+    height: 698px;
+    margin-top: 165px;
+    margin-left: 372px;
+
+    overflow: hidden;
+}
+
+#mid-vid {
+    margin-left: -53px;
+}
+

@@ -73,3 +73,16 @@ nodecg.listenFor("champ-picked", function(value) {
 nodecg.listenFor("champ-picked-clear", function() {
     $champInfoImg.clearQueue().css("background-image", "none")
 });
+
+var $background = $("#mid-vid");
+var $backgroundSource = $("#mid-vid source");
+var comingUpReplicant = nodecg.Replicant("coming-up")
+    .on("change", function(oldVal, newVal) {
+        if ($background.attr("src") !== ("videos/champ-select/" + newVal["colour"] + ".mp4")) {
+            var colour = newVal["colour"];
+            if (colour == "inhouse") { colour = "black" }
+            $background.attr("poster", ("images/champ-select/middle/" + colour + ".png")); // Buffering image.
+            $backgroundSource.attr("src", ("videos/champ-select/" + colour + ".mp4")); // Actual video.
+            $background.load(); // Load it.
+        }
+    });
