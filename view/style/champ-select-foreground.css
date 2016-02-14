@@ -95,12 +95,53 @@ body {
 
 
 /*** CENTRE ELEMENTS ***/
-#champ-info-img {
+#champ-info {
     position: absolute;
     width: 1173px;
     height: 206px;
     margin-top: 873px;
     margin-left: 373px;
+
+    opacity: 0.0; /* Start hidden */
+}
+#champ-info-title {
+    position: absolute;
+    width: 450px;
+    height: 42px;
+    margin-top: 26px;
+    margin-left: 16px;
+
+    font-family: spiegelcdotsemibold, sans-serif;
+    font-size: 40px;
+    color: #F8FCFD;
+
+    border-bottom: 3px solid #F8FCFD;
+}
+#champ-info-stat-titles {
+    position: absolute;
+    height: 108px;
+    width: 115px;
+    margin-top: 73px;
+    margin-left: 16px;
+
+    font-family: spiegelcdotregular, sans-serif;
+    font-size: 30px;
+    color: #F8FCFD;
+
+    text-align: right;
+}
+#champ-info-data {
+    position: absolute;
+    width: 300px;
+    height: 104px;
+    margin-top: 73px;
+    margin-left: 140px;
+
+    font-family: spiegelcdotregular, sans-serif;
+    font-size: 30px;
+    color: #F8FCFD;
+
+    white-space: pre-line;
 }
 
 

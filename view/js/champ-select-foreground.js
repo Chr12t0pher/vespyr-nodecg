@@ -1,4 +1,3 @@
-var $champInfoImage = $("#champ-info-img");
 var $teamInfo = {
     "blue": {"name": $("#blue-team-name"), "score": $("#blue-team-score"), "form": $("#blue-team-form")},
     "red": {"name": $("#red-team-name"), "score": $("#red-team-score"), "form": $("#red-team-form")}
@@ -91,22 +90,27 @@ var champsReplicant = nodecg.Replicant("champ-select")
         });
     });
 
+/** BOTTOM CHAMP INFO **/
+var $champInfo = $("#champ-info");
+
 nodecg.listenFor("champ-picked", function(value) {
-    $champInfoImg.queue(function(next) {
-        var changeInfoImg = new TimelineLite();
-        changeInfoImg
-            .to($champInfoImg, 0.5, {
+    $champInfo.queue(function(next) {
+        var changeStats = new TimelineLite();
+        changeStats
+            .to($champInfo, 0.5, {
                 opacity: 0.0
             })
             .call(function() {
-                $champInfoImg.css("background-image", "url(images/info/" + value["file"] + ".jpg)");
+                $("#champ-info-data").text(value["info"]["pickrate"] + "\n" + value["info"]["banrate"] + "\n" + value["info"]["winrate"]);
             })
-            .to($champInfoImg, 0.5, {
+            .to($champInfo, 0.5, {
                 opacity: 1.0
             });
         setTimeout(function() { next(); }, 15000);
     });
 });
+
+/** POLL **/
 
 var $poll = $("#poll");
 var $pollBar = {"blue": $("#poll-bar-blue"), "red": $("#poll-bar-red")};
@@ -114,7 +118,6 @@ var $pollValues = {"blue": $("#poll-blue-percent"), "red": $("#poll-red-percent"
 
 var strawpollReplicant = nodecg.Replicant("strawpoll")
     .on("change", function(oldVal, newVal) {
-        console.log(newVal);
         if (isNaN(newVal[0])) { console.log(newVal)} // If undefined, return as we don't need to do anything - default is 0% 0%.
         else {
             var total = newVal[0] + newVal[1];
