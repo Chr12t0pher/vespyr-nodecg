@@ -19,14 +19,14 @@ var champReplicant = nodecg.Replicant("champ-select")
                         changePickImg
                             .to($teamPicks[team][pick][0], 0.5, {left: "-110%", ease: Back.easeInOut.config(0.5)}) // Slide out to the left.
                             .call(function() { // Update image.
-                                $teamPicks[team][pick][0].css("background-image", "url(images/pick/" + value["champ"] + ".jpg)");
+                                $teamPicks[team][pick][0].css("background-image", "url(images/champ-select/pick/" + value["champ"] + ".jpg)");
                             })
                             .to($teamPicks[team][pick][0], 0.5, {left: "0px", ease: Back.easeInOut.config(0.5)});
                     } else if (team == "red") { // If red team...
                         changePickImg
                             .to($teamPicks[team][pick][0], 0.5, {right: "-110%", ease: Back.easeInOut.config(0.5)}) // Slide out to the right.
                             .call(function() { // Update image.
-                                $teamPicks[team][pick][0].css("background-image", "url(images/pick/" + value["champ"] + ".jpg)");
+                                $teamPicks[team][pick][0].css("background-image", "url(images/champ-select/pick/" + value["champ"] + ".jpg)");
                             })
                             .to($teamPicks[team][pick][0], 0.5, {right: "0px", ease: Back.easeInOut.config(0.5)});
                     }
@@ -43,7 +43,7 @@ var champReplicant = nodecg.Replicant("champ-select")
                             ease: Back.easeInOut.config(0.5)
                         })
                         .call(function() {
-                            $teamBans[team][ban][0].css("background-image", "url(images/ban/" + value["file"] + ".jpg)");
+                            $teamBans[team][ban][0].css("background-image", "url(images/champ-select/ban/" + value["file"] + ".jpg)");
                         })
                         .to($teamBans[team][ban][0], 0.5, {
                             bottom: "0px",
@@ -62,7 +62,7 @@ nodecg.listenFor("champ-picked", function(value) {
                 opacity: 0.0
             })
             .call(function() {
-                $champInfoImg.css("background-image", "url(images/info/" + value["file"] + ".jpg)");
+                $champInfoImg.css("background-image", "url(images/champ-select/info/" + value["file"] + ".jpg)");
             })
             .to($champInfoImg, 0.5, {
                 opacity: 1.0
