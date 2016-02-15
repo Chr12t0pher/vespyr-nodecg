@@ -1,9 +1,12 @@
-<script type="text/javascript" src="vespyr/components/typeahead.js/dist/typeahead.bundle.min.js"></script>
-<link href="vespyr/components/typeahead.js-bootstrap3.less/typeaheadjs.css" rel="stylesheet">
-<script type="text/javascript" src="vespyr/components/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
-<link href="vespyr/components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet">
-<script src="https://www.youtube.com/iframe_api"></script>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="import" href="master.html">
+    <link rel="stylesheet" href="components/typeahead.js-bootstrap3.less/typeaheadjs.css">
+    <link rel="stylesheet" href="components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css">
+</head>
+<body>
 <div>
     <ul class="nav nav-tabs" role="tablist" id="scenes-tabs">
         <li role="presentation" class="active"><a href="#scenes-coming-up" role="tab" data-toggle="tab">Coming Up</a></li>
@@ -16,24 +19,24 @@
     <div class="tab-content" style="border: 1px solid #dddddd; padding: 5px;">
         <div role="tabpanel" class="tab-pane active" id="scenes-coming-up"> <!-- COMING UP -->
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-sm-3">
                     <div class="form-group form-inline">
-                            <label for="scenes-coming-up-next-game">Next Game: </label>
+                        <label for="scenes-coming-up-next-game">Next Game: </label>
 
-                            <select class="form-control scenes-coming-up-on-change" id="scenes-coming-up-next-game">
-                                <option value="game1">Game 1</option>
-                                <option value="game2">Game 2</option>
-                                <option value="game3">Game 3</option>
-                            </select>
+                        <select class="form-control scenes-coming-up-on-change" id="scenes-coming-up-next-game">
+                            <option value="game1">Game 1</option>
+                            <option value="game2">Game 2</option>
+                            <option value="game3">Game 3</option>
+                        </select>
                     </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-sm-5">
                     <div class="form-group form-inline">
                         <label for="scenes-coming-up-timer">Timer (LOCAL): </label>
                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-timer" placeholder="HH:MM:SS">
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-sm-4">
                     <div class="form-group form-inline">
                         <label for="scenes-coming-up-bg-colour">Background: </label>
 
@@ -66,107 +69,107 @@
                     <hr>
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="row">
                                 <div class="form-group">
-                                    <div class="col-md-8">
+                                    <div class="col-sm-8">
                                         <input type="text" class="form-control scenes-coming-up-on-change typeahead-coming-up-name" id="scenes-coming-up-game1-blue-name" placeholder="Name">
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-sm-4">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game1-blue-tag" placeholder="Tag">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <input type="number" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game1-blue-score" placeholder="Score">
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-sm-8">
                                     <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game1-blue-position" placeholder="Position">
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-sm-12">
                                     <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game1-blue-form" placeholder="Form">
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game1-blue-top" placeholder="Top">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game1-blue-jungle" placeholder="Jungle">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game1-blue-mid" placeholder="Mid">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game1-blue-adc" placeholder="ADC">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game1-blue-support" placeholder="Support">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="row">
                                 <div class="form-group">
-                                    <div class="col-md-8">
+                                    <div class="col-sm-8">
                                         <input type="text" class="form-control scenes-coming-up-on-change typeahead-coming-up-name" id="scenes-coming-up-game1-red-name" placeholder="Name">
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-sm-4">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game1-red-tag" placeholder="Tag">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <input type="number" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game1-red-score" placeholder="Score">
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-sm-8">
                                     <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game1-red-position" placeholder="Position">
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-sm-12">
                                     <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game1-red-form" placeholder="Form">
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game1-red-top" placeholder="Top">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game1-red-jungle" placeholder="Jungle">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game1-red-mid" placeholder="Mid">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game1-red-adc" placeholder="ADC">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game1-red-support" placeholder="Support">
                                     </div>
                                 </div>
@@ -194,107 +197,107 @@
                     <hr>
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="row">
                                 <div class="form-group">
-                                    <div class="col-md-8">
+                                    <div class="col-sm-8">
                                         <input type="text" class="form-control scenes-coming-up-on-change typeahead-coming-up-name" id="scenes-coming-up-game2-blue-name" placeholder="Name">
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-sm-4">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game2-blue-tag" placeholder="Tag">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <input type="number" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game2-blue-score" placeholder="Score">
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-sm-8">
                                     <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game2-blue-position" placeholder="Position">
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-sm-12">
                                     <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game2-blue-form" placeholder="Form">
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game2-blue-top" placeholder="Top">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game2-blue-jungle" placeholder="Jungle">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game2-blue-mid" placeholder="Mid">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game2-blue-adc" placeholder="ADC">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game2-blue-support" placeholder="Support">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="row">
                                 <div class="form-group">
-                                    <div class="col-md-8">
+                                    <div class="col-sm-8">
                                         <input type="text" class="form-control scenes-coming-up-on-change typeahead-coming-up-name" id="scenes-coming-up-game2-red-name" placeholder="Name">
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-sm-4">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game2-red-tag" placeholder="Tag">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <input type="number" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game2-red-score" placeholder="Score">
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-sm-8">
                                     <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game2-red-position" placeholder="Position">
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-sm-12">
                                     <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game2-red-form" placeholder="Form">
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game2-red-top" placeholder="Top">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game2-red-jungle" placeholder="Jungle">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game2-red-mid" placeholder="Mid">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game2-red-adc" placeholder="ADC">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game2-red-support" placeholder="Support">
                                     </div>
                                 </div>
@@ -322,107 +325,107 @@
                     <hr>
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="row">
                                 <div class="form-group">
-                                    <div class="col-md-8">
+                                    <div class="col-sm-8">
                                         <input type="text" class="form-control scenes-coming-up-on-change typeahead-coming-up-name" id="scenes-coming-up-game3-blue-name" placeholder="Name">
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-sm-4">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game3-blue-tag" placeholder="Tag">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <input type="number" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game3-blue-score" placeholder="Score">
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-sm-8">
                                     <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game3-blue-position" placeholder="Position">
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-sm-12">
                                     <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game3-blue-form" placeholder="Form">
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game3-blue-top" placeholder="Top">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game3-blue-jungle" placeholder="Jungle">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game3-blue-mid" placeholder="Mid">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game3-blue-adc" placeholder="ADC">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game3-blue-support" placeholder="Support">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="row">
                                 <div class="form-group">
-                                    <div class="col-md-8">
+                                    <div class="col-sm-8">
                                         <input type="text" class="form-control scenes-coming-up-on-change typeahead-coming-up-name" id="scenes-coming-up-game3-red-name" placeholder="Name">
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-sm-4">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game3-red-tag" placeholder="Tag">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <input type="number" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game3-red-score" placeholder="Score">
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-sm-8">
                                     <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game3-red-position" placeholder="Position">
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-sm-12">
                                     <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game3-red-form" placeholder="Form">
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game3-red-top" placeholder="Top">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game3-red-jungle" placeholder="Jungle">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game3-red-mid" placeholder="Mid">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game3-red-adc" placeholder="ADC">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control scenes-coming-up-on-change" id="scenes-coming-up-game3-red-support" placeholder="Support">
                                     </div>
                                 </div>
@@ -454,20 +457,20 @@
 
         <div role="tabpanel" class="tab-pane" id="scenes-champ-select"> <!-- CHAMP SELECT -->
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-sm-6">
                     <div class="row">
                         <div class="form-group">
-                            <div class="col-md-9">
+                            <div class="col-sm-9">
                                 <input type="text" id="champ-blue-ban1" class="form-control typeahead-champs update-on-change" placeholder="Ban 1">
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-9">
+                            <div class="col-sm-9">
                                 <input type="text" id="champ-blue-ban2" class="form-control typeahead-champs update-on-change" placeholder="Ban 2">
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-9">
+                            <div class="col-sm-9">
                                 <input type="text" id="champ-blue-ban3" class="form-control typeahead-champs update-on-change" placeholder="Ban 3">
                             </div>
                         </div>
@@ -475,62 +478,62 @@
                     <hr>
                     <div class="row">
                         <div class="form-group">
-                            <div class="col-md-9">
+                            <div class="col-sm-9">
                                 <input type="text" id="champ-blue-top" class="form-control typeahead-champs update-on-change" placeholder="Top">
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-sm-3">
                                 <input type="checkbox" id="champ-blue-top-status" class="bootswitch">
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-9">
+                            <div class="col-sm-9">
                                 <input type="text" id="champ-blue-jungle" class="form-control typeahead-champs update-on-change" placeholder="Jungle">
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-sm-3">
                                 <input type="checkbox" id="champ-blue-jungle-status" class="bootswitch">
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-9">
+                            <div class="col-sm-9">
                                 <input type="text" id="champ-blue-mid" class="form-control typeahead-champs update-on-change" placeholder="Mid">
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-sm-3">
                                 <input type="checkbox" id="champ-blue-mid-status" class="bootswitch">
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-9">
+                            <div class="col-sm-9">
                                 <input type="text" id="champ-blue-adc" class="form-control typeahead-champs update-on-change" placeholder="ADC">
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-sm-3">
                                 <input type="checkbox" id="champ-blue-adc-status" class="bootswitch">
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-9">
+                            <div class="col-sm-9">
                                 <input type="text" id="champ-blue-support" class="form-control typeahead-champs update-on-change" placeholder="Support">
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-sm-3">
                                 <input type="checkbox" id="champ-blue-support-status" class="bootswitch">
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-sm-6">
                     <div class="row">
                         <div class="form-group">
-                            <div class="col-md-9 col-md-offset-3">
+                            <div class="col-sm-9 col-sm-offset-3">
                                 <input type="text" id="champ-red-ban1" class="form-control typeahead-champs update-on-change" placeholder="Ban 1">
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-9 col-md-offset-3">
+                            <div class="col-sm-9 col-sm-offset-3">
                                 <input type="text" id="champ-red-ban2" class="form-control typeahead-champs update-on-change" placeholder="Ban 2">
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-9 col-md-offset-3">
+                            <div class="col-sm-9 col-sm-offset-3">
                                 <input type="text" id="champ-red-ban3" class="form-control typeahead-champs update-on-change" placeholder="Ban 3">
                             </div>
                         </div>
@@ -538,42 +541,42 @@
                     <hr>
                     <div class="row">
                         <div class="form-group">
-                            <div class="col-md-3">
+                            <div class="col-sm-3">
                                 <input type="checkbox" id="champ-red-top-status" class="bootswitch">
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-sm-9">
                                 <input type="text" id="champ-red-top" class="form-control typeahead-champs update-on-change" placeholder="Top">
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-3">
+                            <div class="col-sm-3">
                                 <input type="checkbox" id="champ-red-jungle-status" class="bootswitch">
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-sm-9">
                                 <input type="text" id="champ-red-jungle" class="form-control typeahead-champs update-on-change" placeholder="Jungle">
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-3">
+                            <div class="col-sm-3">
                                 <input type="checkbox" id="champ-red-mid-status" class="bootswitch">
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-sm-9">
                                 <input type="text" id="champ-red-mid" class="form-control typeahead-champs update-on-change" placeholder="Mid">
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-3">
+                            <div class="col-sm-3">
                                 <input type="checkbox" id="champ-red-adc-status" class="bootswitch">
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-sm-9">
                                 <input type="text" id="champ-red-adc" class="form-control typeahead-champs update-on-change" placeholder="ADC">
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-3">
+                            <div class="col-sm-3">
                                 <input type="checkbox" id="champ-red-support-status" class="bootswitch">
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-sm-9">
                                 <input type="text" id="champ-red-support" class="form-control typeahead-champs update-on-change" placeholder="Support">
                             </div>
                         </div>
@@ -593,7 +596,7 @@
 
         <div role="tabpanel" class="tab-pane" id="scenes-in-game"> <!-- IN GAME -->
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-sm-6">
                     <div class="form-group">
                         <input type="text" class="form-control in-game-on-change" id="in-game-left-top-text" placeholder="Top Left Text">
                     </div>
@@ -601,7 +604,7 @@
                         <input type="text" class="form-control in-game-on-change" id="in-game-left-bottom-text" placeholder="Bottom Left Text">
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-sm-6">
                     <div class="form-group">
                         <input type="text" class="form-control in-game-on-change" id="in-game-right-text" placeholder="Right Text">
                     </div>
@@ -620,7 +623,7 @@
         <div role="tabpanel" class="tab-pane" id="scenes-analysis">
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-sm-12">
                     <div class="input-group">
                         <input type="text" id="analysis-video-id" class="form-control" placeholder="Video ID">
                         <span class="input-group-btn">
@@ -639,9 +642,15 @@
 </div>
 
 <script> // ANALYSIS JS
-    /** INIT YOUTUBE PLAYER **/
-    var tag = document.createElement("script");
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName("script")[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+/** INIT YOUTUBE PLAYER **/
+var tag = document.createElement("script");
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName("script")[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 </script>
+<script type="text/javascript" src="components/typeahead.js/dist/typeahead.bundle.min.js"></script>
+<script type="text/javascript" src="components/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
+<script type="text/javascript" src="scenes.js"></script>
+</body>
+</html>
+
