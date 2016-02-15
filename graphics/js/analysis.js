@@ -36,3 +36,7 @@ nodecg.listenFor("analysis-video", function(data) {
     setTimeout(player.pauseVideo(), 100);
 });
 
+nodecg.listenFor("refresh", function(graphic) {
+    if (graphic == "analysis") { location.reload(true); }
+});
+

@@ -71,3 +71,7 @@ function cycleImages() {
 $(document).ready(function() {
     setInterval("cycleImages()", 8000);
 });
+
+nodecg.listenFor("refresh", function(graphic) {
+    if (graphic == "in-game") { location.reload(true); }
+});

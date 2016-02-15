@@ -168,3 +168,7 @@ preload.on("complete", function() { // Don't do anything until we've loaded asse
             });
         });
 });
+
+nodecg.listenFor("refresh", function(graphic) {
+    if (graphic == "coming-up") { location.reload(true); }
+});
