@@ -755,3 +755,9 @@ window.addEventListener("message", function(event) {
     }
 }, false);
 
+var $toast = document.getElementById('toast');
+nodecg.listenFor("loaded-all", function() {
+    $toast.text = "Successfully loaded all scenes, good luck with the stream!";
+    $toast.show();
+});
+

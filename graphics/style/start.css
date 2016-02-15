@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    background: none transparent;
+}
+#container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+
+    background-image: url("");
+}
+#ready {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+
+    background-color: green;
+
+    display: none;
+}

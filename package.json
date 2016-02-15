@@ -23,6 +23,12 @@
     ],
     "graphics": [
       {
+        "file": "start.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
         "file": "coming-up.html",
         "width": 1920,
         "height": 1080,
@@ -34,7 +40,18 @@
         "height": 1080,
         "singleInstance": false
       },
-
+      {
+        "file": "champ-select-background.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
+        "file": "champ-select-foreground.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
       {
         "file": "in-game.html",
         "width": 1920,
