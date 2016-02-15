@@ -1,6 +1,62 @@
 {
   "name": "vespyr",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/VespyrLeague/vespyr-nodecg.git"
+  },
+  "homepage": "https://vespyrleague.com",
+  "contributors": [
+    "Chris Stevens <contact@cstevens.biz> (http://cstevens.biz)"
+  ],
+  "description": "Stream controller and assets for the Vespyr League livestream.",
+  "nodecg": {
+    "compatibleRange": "~0.7.0",
+    "dashboardPanels": [
+      {
+        "name": "scene-control",
+        "title": "Scene Control",
+        "width": 6,
+        "headerColor": "#318DAF",
+        "file": "scenes.html"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "coming-up.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
+        "file": "champ-select.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+
+      {
+        "file": "in-game.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
+        "file": "analysis.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
+        "file": "end.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      }
+    ]
+  },
   "dependencies": {
-    "hyperquest": "1.2.0"
+    "hyperquest": "1.2.0",
+    "concat-stream": "1.5.1"
   }
 }
