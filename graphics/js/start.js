@@ -14,3 +14,8 @@ nodecg.listenFor("loaded", function(package) {
         nodecg.sendMessage("loaded-all"); // Send a toast to the dashboard.
     }
 });
+
+nodecg.listenFor("refresh", function(graphic) {
+    if (graphic == "start") { location.reload(true); }
+});
+
