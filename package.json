@@ -43,6 +43,20 @@
           }
         ],
         "file": "obs-control-modal.html"
+      },
+      {
+        "name": "strawpoll",
+        "title": "Stawpoll",
+        "width": 2,
+        "headerColor": "#318DAF",
+        "file": "strawpoll.html"
+      },
+      {
+        "name": "casters",
+        "title": "Casters",
+        "width": 2,
+        "headerColor": "#318DAF",
+        "file": "casters.html"
       }
     ],
     "graphics": [
