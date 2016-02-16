@@ -2,11 +2,11 @@
 var $obsStatus = $("#obs-connection-status");
 var $streamStatus = $("#obs-stream-status");
 var $obsStartPromptBtn = $("#obs-start-prompt");
-var $obsStartConfirmBtn = $("#obs-start-confirm");
 var $obsStopBtn = $("#obs-stop-btn");
 var $sceneInputs = {
-    "coming-up": $("input[value='coming-up']"), "champ-select": $("input[value='champ-select']"),
-    "loading": $("input[value='loading']"), "in-game": $("input[value='in-game']"), "end": $("input[value='end']")
+    "start": $("input[value='start']"), "coming-up": $("input[value='coming-up']"),
+    "champ-select": $("input[value='champ-select']"), "loading": $("input[value='loading']"),
+    "in-game": $("input[value='in-game']"), "analysis": $("input[value='analysis']"), "end": $("input[value='end']")
 };
 
 
@@ -105,7 +105,7 @@ $("#obs-ip-btn").click(function() {
 });
 
 /** START/STOP **/
-$obsStartConfirmBtn.click(function() {
+nodecg.listenFor("obs-start", function() {
     obs.getStreamingStatus(function(live, preview) {
         if (live && preview) { // If the preview is live...
             obs.toggleStream(); // Toggle it off.
@@ -113,11 +113,16 @@ $obsStartConfirmBtn.click(function() {
     });
     setTimeout(function() {
         obs.toggleStream(); // Go live!
-        obs.setCurrentScene("champ-select"); // Go through all the scenes to load the web-pages.
-        obs.setCurrentScene("loading");
-        obs.setCurrentScene("in-game");
-        obs.setCurrentScene("end");
-        obs.setCurrentScene("coming-up"); // End on the coming-up screen deliberately.
+        obs.setCurrentScene("start"); // Load the start scene first, so we can listen for the loaded messages.
+        setTimeout(function() {
+            obs.setCurrentScene("coming-up"); // Go through all the scenes to load the web-pages.
+            obs.setCurrentScene("champ-select");
+            obs.setCurrentScene("loading");
+            obs.setCurrentScene("in-game");
+            obs.setCurrentScene("analysis");
+            obs.setCurrentScene("end");
+            obs.setCurrentScene("start"); // End on the start screen deliberately.
+        }, 1000)
     }, 1000); // Go live after 1 second to account for turning off the preview.
 });
 

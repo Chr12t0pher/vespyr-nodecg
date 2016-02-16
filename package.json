@@ -19,6 +19,30 @@
         "width": 6,
         "headerColor": "#318DAF",
         "file": "scenes.html"
+      },
+      {
+        "name": "obs-control",
+        "title": "OBS Control",
+        "width": 2,
+        "headerColor": "#318DAF",
+        "file": "obs.html"
+      },
+      {
+        "name": "obs-control-modal",
+        "title": "Are you sure?",
+        "width": 4,
+        "dialog": true,
+        "dialogButtons": [
+          {
+            "name": "CANCEL",
+            "type": "dismiss"
+          },
+          {
+            "name": "GO LIVE",
+            "type": "confirm"
+          }
+        ],
+        "file": "obs-control-modal.html"
       }
     ],
     "graphics": [
