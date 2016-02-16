@@ -3,11 +3,12 @@ var preload = new createjs.LoadQueue(false);
 preload.loadManifest([ // Preload videos.
     {id: "blue-vid", src: "videos/blue.mp4"},
     {id: "blue-poster", src: "videos/blue.png"},
-    {id: "red-vid", src: "videos/coming-up/red.mp4"},
+    {id: "red-vid", src: "videos/red.mp4"},
     {id: "red-poster", src: "videos/red.png"},
-    {id: "green-vid", src: "videos/coming-up/green.mp4"},
+    {id: "green-vid", src: "videos/green.mp4"},
     {id: "green-poster", src: "videos/green.png"},
-    {id: "black-vid", src: "videos/coming-up/black.mp4"},
+    {id: "black-vid", src: "videos/black.mp4"},
+    {id: "black-poster", src: "videos/black.png"},
     {id: "inhouse-img", src: "images/coming-up/inhouse.jpg"}
 ]);
 preload.load();
@@ -128,30 +129,43 @@ preload.on("complete", function() { // Don't do anything until we've loaded asse
     var $backgroundVid = $("#background-vid");
     var $backgroundVidSource = $("#background-vid source");
     var $foregroundImg = $("#foreground-img");
+    var currentBG = "";
+    var currentTimer = "";
 
     var comingUpReplicant = nodecg.Replicant("coming-up")
         .on("change", function(oldVal, newVal) { // On change...
-            if (newVal["colour"] == "inhouse") { // If we're doing inhouses.
-                $foregroundImg.css("background-image",  "url(" + preload.getResult("inhouse-img").src + ")").css("z-index", "100");
-            } else {
-                $backgroundVid.attr("poster", preload.getResult(newVal["colour"] + "-poster").src);
-                $backgroundVidSource.attr("src", preload.getResult(newVal["colour"] + "-vid").src); // Actual video.
-                $backgroundVid.load(); // Load it.
-                $foregroundImg.css("background-image",  ('url("images/coming-up/foreground.png")')).css("z-index", "0");
+            if (currentBG != newVal["colour"]) {
+                if (newVal["colour"] == "inhouse") { // If we're doing inhouses.
+                    $foregroundImg.css("background-image",  "url(" + preload.getResult("inhouse-img").src + ")").css("z-index", "100");
+                } else {
+                    $backgroundVid.attr("poster", preload.getResult(newVal["colour"] + "-poster").src);
+                    $backgroundVidSource.attr("src", preload.getResult(newVal["colour"] + "-vid").src); // Actual video.
+                    $backgroundVid.load(); // Load it.
+                    $foregroundImg.css("background-image",  ('url("images/coming-up/foreground.png")')).css("z-index", "0");
+                }
+                currentBG = newVal["colour"];
             }
             if (!$comingUpPanels[newVal["next_game"]].is(":visible")) { // If the next game has changed...
                 $(".info:visible").slideUp(); // Slide the currently visible game up.
                 $comingUpPanels[newVal["next_game"]].slideDown(); // Slide the new game down.
             }
-            var date = new Date();
-            function pad (str, max) {
-                str = str.toString();
-                return str.length < max ? pad("0" + str, max) : str;
+
+            if (currentTimer != newVal["timer"]) {
+                var time = new Date();
+                var timeString = newVal["timer"].split(":");
+                time.setHours(timeString[0], timeString[1] - time.getTimezoneOffset() - 60, timeString[2]);
+                function pad (str, max) {
+                    str = str.toString();
+                    return str.length < max ? pad("0" + str, max) : str;
+                }
+                var countdown = (time.getFullYear() + "/" + pad(time.getMonth() + 1, 2) + "/" + pad(time.getDate(), 2) +
+                " " + pad(time.getHours(), 2) + ":" + pad(time.getMinutes(), 2) + ":" + pad(time.getSeconds(), 2));
+
+                $("#timer").countdown(countdown, function(e) {
+                    $(this).text(e.strftime("%H:%M:%S"))
+                });
+                currentTimer = newVal["timer"];
             }
-            var time = (date.getFullYear() + "/" + pad(date.getMonth() + 1, 2) + "/" + pad(date.getDate(), 2) + " " + newVal["timer"]);
-            $("#timer").countdown(time, function(e) {
-                $(this).text(e.strftime("%H:%M:%S"))
-            });
         });
 
     var teamsReplicant = nodecg.Replicant("team-data")
