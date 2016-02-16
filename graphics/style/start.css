@@ -2,13 +2,34 @@ body {
     margin: 0;
     background: none transparent;
 }
-#container {
+/*
+#background-vid {
+    position: absolute;
+    margin-top: 0px;
+    margin-left: 0px;
+    width: 1920px;
+    height: 1080px;
+}
+*/
+
+#background-img {
     position: absolute;
     top: 0;
     left: 0;
     width: 1920px;
     height: 1080px;
-    overflow: hidden;
 
-    background-image: url("../images/start/background.jpg");
+    z-index: -10;
+}
+
+#foreground-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1920px;
+    height: 1080px;
+
+    background-image: url("../images/start/foreground.png");
+
+    z-index: 10;
 }
