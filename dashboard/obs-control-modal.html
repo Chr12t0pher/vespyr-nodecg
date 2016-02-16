@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="import" href="master.html">
+</head>
+<body>
+
+<b>MAKE SURE OF THE FOLLOWING BEFORE GOING LIVE</b>
+<ul>
+    <li>All games are loaded into the Coming Up panel, including rosters, tags, form etc.</li>
+    <li>The timer is set.</li>
+    <li>Champion Select is cleared ready for the first game.</li>
+    <li>The in-game text is correct (ie. week and day are correct).</li>
+</ul>
+<b>IF YOU CLICK THE 'GO LIVE' BUTTON, YOU WILL GO LIVE IMMEDIATELY!</b>
+
+<script>
+    document.addEventListener("dialog-confirmed", function() {
+        nodecg.sendMessage("obs-start");
+    });
+</script>
+
+</body>
+</html>
