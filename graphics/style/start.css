@@ -10,7 +10,7 @@ body {
     height: 1080px;
     overflow: hidden;
 
-    background-image: url("");
+    background-image: url("../images/start/background.jpg");
 }
 #ready {
     position: absolute;
