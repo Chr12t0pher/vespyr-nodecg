@@ -1,15 +1,11 @@
 /** PRELOAD.JS **/
 var preload = new createjs.LoadQueue(false);
-preload.loadManifest([ // Preload videos.
-    //{id: "blue-vid", src: "videos/blue.mp4"},
-    {id: "blue-poster", src: "videos/blue.png"},
-    //{id: "red-vid", src: "videos/red.mp4"},
-    {id: "red-poster", src: "videos/red.png"},
-    //{id: "green-vid", src: "videos/green.mp4"},
-    {id: "green-poster", src: "videos/green.png"},
-    //{id: "black-vid", src: "videos/black.mp4"},
-    {id: "black-poster", src: "videos/black.png"},
-    {id: "inhouse-img", src: "images/coming-up/inhouse.jpg"}
+preload.loadManifest([ // Preload assets.
+    {id: "blue-bg", src: "images/blue.jpg"},
+    {id: "green-bg", src: "images/green.jpg"},
+    {id: "red-bg", src: "images/red.jpg"},
+    {id: "black-bg", src: "images/black.jpg"},
+    {id: "inhouse-bg", src: "images/coming-up/inhouse.jpg"}
 ]);
 preload.load();
 
@@ -126,8 +122,7 @@ preload.on("complete", function() { // Don't do anything until we've loaded asse
         "game3": $("#game-3-info")
     };
 
-    var $backgroundVid = $("#background-vid");
-    var $backgroundVidSource = $("#background-vid source");
+    var $backgroundImg = $("#background-img");
     var $foregroundImg = $("#foreground-img");
     var currentBG = "";
     var currentTimer = "";
@@ -136,12 +131,10 @@ preload.on("complete", function() { // Don't do anything until we've loaded asse
         .on("change", function(oldVal, newVal) { // On change...
             if (currentBG != newVal["colour"]) {
                 if (newVal["colour"] == "inhouse") { // If we're doing inhouses.
-                    $foregroundImg.css("background-image",  "url(" + preload.getResult("inhouse-img").src + ")").css("z-index", "100");
+                    $foregroundImg.css("background-image",  "url(" + preload.getResult("inhouse-bg").src + ")").css("z-index", "100");
                 } else {
-                    $backgroundVid.attr("poster", preload.getResult(newVal["colour"] + "-poster").src);
-                    // $backgroundVidSource.attr("src", preload.getResult(newVal["colour"] + "-vid").src); // Actual video.
-                    // $backgroundVid.load(); // Load it.
-                    $foregroundImg.css("background-image",  ('url("images/coming-up/foreground.png")')).css("z-index", "0");
+                    $backgroundImg.css("background-image", "url(" + preload.getResult(newVal["colour"] + "-bg").src + ")");
+                    $foregroundImg.css("background-image",  'url("images/coming-up/foreground.png")').css("z-index", "0");
                 }
                 currentBG = newVal["colour"];
             }

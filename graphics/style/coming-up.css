@@ -10,15 +10,12 @@ body {
     height: 1080px;
     overflow: hidden;
 }
-#background {
+#background-img {
     position: absolute;
     margin-top: 0px;
     margin-left: 0px;
     width: 1920px;
     height: 1080px;
-}
-#background-vid {
-    object-fit: cover;
 }
 
 #foreground-img {
