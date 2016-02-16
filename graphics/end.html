@@ -2,33 +2,14 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <style>
-        body {
-            margin: 0;
-        }
-
-        #container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 1920px;
-            height: 1080px;
-            overflow: hidden;
-
-            background-image: url("images/end/end.jpg");
-        }
-    </style>
+    <link rel="stylesheet" href="style/end.css">
 </head>
 <body>
-<div id="container"></div>
+<div id="background-img"></div>
+<div id="foreground-img"></div>
 
-<script>
-    window.onload = function() {
-        nodecg.sendMessage("loaded", "end");
-    };
-    nodecg.listenFor("refresh", function(graphic) {
-        if (graphic == "end") { location.reload(true); }
-    });
-</script>
+<script src="components/jquery/dist/jquery.min.js"></script>
+<script src="https://code.createjs.com/preloadjs-0.6.2.min.js"></script>
+<script src="js/end.js"></script>
 </body>
 </html>
