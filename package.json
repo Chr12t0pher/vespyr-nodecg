@@ -57,6 +57,13 @@
         "width": 2,
         "headerColor": "#318DAF",
         "file": "casters.html"
+      },
+      {
+        "name": "refresh",
+        "title": "Refresh",
+        "width": 2,
+        "headerColor": "#318DAF",
+        "file": "refresh.html"
       }
     ],
     "graphics": [
