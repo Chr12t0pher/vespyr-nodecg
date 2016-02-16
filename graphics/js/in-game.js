@@ -76,7 +76,7 @@ $(window).on("load", function() {
         })
     }
 
-    setInterval("cycleImages()", 8000);
+    setInterval(function() { cycleImages() }, 8000);
 });
 
 nodecg.listenFor("refresh", function(graphic) {
