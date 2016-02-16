@@ -5,6 +5,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player;
 function onYouTubeIframeAPIReady() {
+    nodecg.sendMessage("loaded", "analysis"); // Let the start scene know we're ready.
     player = new YT.Player("player", {
         height: "1080",
         width: "1920",
