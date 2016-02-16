@@ -26,6 +26,9 @@
     window.onload = function() {
         nodecg.sendMessage("loaded", "end");
     };
+    nodecg.listenFor("refresh", function(graphic) {
+        if (graphic == "end") { location.reload(true); }
+    });
 </script>
 </body>
 </html>
