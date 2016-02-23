@@ -98,6 +98,12 @@
         "singleInstance": false
       },
       {
+        "file": "loading.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
         "file": "in-game.html",
         "width": 1920,
         "height": 1080,
