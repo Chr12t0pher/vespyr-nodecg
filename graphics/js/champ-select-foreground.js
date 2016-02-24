@@ -158,6 +158,7 @@ $(window).on("load", function() {
         });
 
     nodecg.listenFor("strawpoll-start", function(data) {
+		currTotal = 0;
 		nodecg.sendMessage("champ-picked-clear");
         $("#poll-url").text("strawpoll.me/" + data);
         $poll.animate({opacity: 1.0}, 500);
