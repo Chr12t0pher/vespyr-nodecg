@@ -610,8 +610,6 @@ $(".bootswitch").on("switchChange.bootstrapSwitch", function(event, state) {
                 }
             }
 
-            console.log(pickrate, banrate, winrate);
-
             nodecg.sendMessage("champ-picked", {
                 "name": champ,
                 "file": file,
