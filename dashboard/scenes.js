@@ -714,6 +714,18 @@ window.onYouTubeIframeAPIReady = function() {
             onStateChange: onPlayerStateChange
         }
     });
+	window.addEventListener("message", function(event) {
+		try {
+			event = JSON.parse(event.data);
+		} catch(e) {
+			// If it doesn't run it's something with the Chrome VM ie. not my problem.
+		}
+		if (player.getPlayerState() === 2 && event["event"] == "infoDelivery") { // If paused.
+			nodecg.sendMessage("analysis-pause", {
+				"time": player.getCurrentTime()
+			});
+		}
+	}, false);
 };
 
 /** INPUTS **/
@@ -745,15 +757,6 @@ function onPlayerStateChange(event) {
         });
     }
 }
-
-window.addEventListener("message", function(event) {
-    event = JSON.parse(event.data);
-    if (player.getPlayerState() === 2 && event["event"] == "infoDelivery") { // If paused.
-        nodecg.sendMessage("analysis-pause", {
-            "time": player.getCurrentTime()
-        });
-    }
-}, false);
 
 var $toast = document.getElementById('toast');
 nodecg.listenFor("loaded-all", function() {
