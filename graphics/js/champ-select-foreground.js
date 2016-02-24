@@ -127,12 +127,16 @@ $(window).on("load", function() {
             }, 15000);
         });
     });
+	nodecg.listenFor("champ-picked-clear", function() {
+		$champInfo.clearQueue().css("opacity", 0.0);
+	});
 
     /** POLL **/
 
     var $poll = $("#poll");
     var $pollBar = {"blue": $("#poll-bar-blue"), "red": $("#poll-bar-red")};
     var $pollValues = {"blue": $("#poll-blue-percent"), "red": $("#poll-red-percent")};
+	var currTotal = 0;
 
     var strawpollReplicant = nodecg.Replicant("strawpoll")
         .on("change", function(oldVal, newVal) {
@@ -141,6 +145,7 @@ $(window).on("load", function() {
             } // If undefined, return as we don't need to do anything - default is 0% 0%.
             else {
                 var total = newVal[0] + newVal[1];
+				if (currTotal == total) { return } // Dont do math if it's the same.
                 if (total == 0) {
                     total = 1
                 } // Set total to 1 if it's 0 so we don't get divide by zero errors.
@@ -153,11 +158,12 @@ $(window).on("load", function() {
         });
 
     nodecg.listenFor("strawpoll-start", function(data) {
+		nodecg.sendMessage("champ-picked-clear");
         $("#poll-url").text("strawpoll.me/" + data);
-        $poll.show()
+        $poll.animate({opacity: 1.0}, 500);
     });
 
     nodecg.listenFor("strawpoll-stop", function() {
-        $poll.hide();
+        $poll.animate({opacity: 0.0}, 500)
     });
 });

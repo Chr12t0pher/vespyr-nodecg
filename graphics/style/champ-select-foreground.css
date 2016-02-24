@@ -143,6 +143,60 @@ body {
 
     white-space: pre-line;
 }
+/** POLL **/
+#poll {
+	position: absolute;
+	width: 1173px;
+	height: 206px;
+	margin-top: 873px;
+	margin-left: 373px;
+
+	opacity: 0.0; /* Start hidden */
+	background-color: black;
+}
+#poll > div { position: absolute; }
+#poll-title, #poll-url {
+	width: 571px;
+	height: 42px;
+	margin-top: 10px;
+
+	font-family: spiegelcdotregular, sans-serif;
+	color: #F8FCFD;
+	font-size: 40px;
+}
+#poll-title { margin-left: 16px; }
+#poll-url { margin-left: 580px; text-align: right; }
+#poll-bar {
+	width: 1144px;
+	height: 125px;
+	margin-top: 65px;
+	margin-left: 16px;
+}
+#poll-bar-blue, #poll-bar-red {
+	position: absolute;
+	height: 100%;
+	top: 0;
+}
+#poll-bar-blue {
+	left: 0;
+	width: 50%;
+	background: -webkit-linear-gradient(top, rgba(4,64,204,1) 0%, rgba(5,76,255,1) 50%, rgba(4,64,204,1) 100%);
+}
+#poll-bar-red { right: 0; width: 50%; background-color: #B81F1F; }
+
+
+#poll-blue-percent, #poll-red-percent {
+	position: absolute;
+	width: 100px;
+	height: 48px;
+	margin-top: 38px;
+
+	font-family: spiegelcdotsemibold, sans-serif;
+	color: #F8FCFD;
+	font-size: 40px;
+}
+#poll-blue-percent { margin-left: 5px; }
+#poll-red-percent { margin-left: 1037px; text-align: right; }
 
 
 /*** RED TEAM ***/
@@ -248,53 +302,3 @@ body {
     font-size: 40px;
     text-align: center;
 }
-
-#poll {
-    position: absolute;
-    display: none;
-    width: 1142px;
-    height: 110px;
-    margin-top: 572px;
-    margin-left: 16px;
-
-    border-top: #F8FCFD solid 2px;
-}
-#poll > div { position: absolute; }
-#poll-title, #poll-url {
-    width: 571px;
-    height: 42px;
-    margin-top: 10px;
-
-    font-family: spiegelcdotregular, sans-serif;
-    color: #F8FCFD;
-    font-size: 40px;
-}
-#poll-title { margin-left: 0px; }
-#poll-url { margin-left: 571px; text-align: right; }
-#poll-bar {
-    width: 1142px;
-    height: 50px;
-    bottom: 0;
-    left: 0;
-}
-#poll-bar-blue, #poll-bar-red {
-    position: absolute;
-    height: 50px;
-    top: 0;
-}
-#poll-bar-blue { left: 0; width: 50%; background-color: #054CFF; }
-#poll-bar-red { right: 0; width: 50%; background-color: #B81F1F; }
-
-
-#poll-blue-percent, #poll-red-percent {
-    position: absolute;
-    width: 100px;
-    height: 48px;
-    margin-top: 3px;
-
-    font-family: spiegelcdotsemibold, sans-serif;
-    color: #F8FCFD;
-    font-size: 40px;
-}
-#poll-blue-percent { margin-left: 5px; }
-#poll-red-percent { margin-left: 1037px; text-align: right; }
