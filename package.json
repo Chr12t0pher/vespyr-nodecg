@@ -124,7 +124,7 @@
     ]
   },
   "dependencies": {
-    "hyperquest": "1.2.0",
-    "concat-stream": "1.5.1"
+    "hyperquest": "~1.2.0",
+    "concat-stream": "~1.5.1"
   }
 }
