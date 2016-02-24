@@ -1,68 +1,68 @@
-<div class="input-group">
-    <input type="text" class="form-control" id="obs-ip" placeholder="IP Address" value="127.0.0.1">
-    <span class="input-group-btn">
-        <button class="btn btn-default" type="button" id="obs-ip-btn"><i class="fa fa-arrow-circle-right"></i></button>
-    </span>
-</div>
-<div id="obs-connection-status" class="alert alert-danger" role="alert" style="text-align: center; font-weight: bold;">LOADING...</div>
-<div class="radio">
-    <label>
-        <input type="radio" name="obs-scene" value="coming-up">Coming Up
-    </label>
-</div>
-<div class="radio">
-    <label>
-        <input type="radio" name="obs-scene" value="champ-select">Champ Select
-    </label>
-</div>
-<div class="radio">
-    <label>
-        <input type="radio" name="obs-scene" value="loading">Loading
-    </label>
-</div>
-<div class="radio">
-    <label>
-        <input type="radio" name="obs-scene" value="in-game">In Game
-    </label>
-</div>
-<div class="radio">
-    <label>
-        <input type="radio" name="obs-scene" value="end">End
-    </label>
-</div>
-<div id="obs-stream-status" class="alert alert-danger" role="alert" style="text-align: center; font-weight: bold; margin-bottom: 0;">LOADING...</div>
-
-<hr>
-
-<div class="btn-group btn-group-justified">
-    <div class="btn-group">
-        <button class="btn btn-xs btn-success" id="obs-start-prompt" data-toggle="modal" data-target="#obs-stream-start-modal">Start Stream</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="import" href="master.html">
+</head>
+<body>
+<div id="container">
+    <div class="input-group">
+        <input type="text" class="form-control" id="obs-ip" placeholder="IP Address" value="127.0.0.1">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button" id="obs-ip-btn"><i class="fa fa-arrow-circle-right"></i></button>
+        </span>
     </div>
-    <div class="btn-group">
-        <button class="btn btn-xs btn-danger" id="obs-stop-btn">Stop Stream</button>
+    <div id="obs-connection-status" class="alert alert-danger" role="alert" style="text-align: center; font-weight: bold;">LOADING...</div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="obs-scene" value="start">Start
+        </label>
     </div>
-</div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="obs-scene" value="coming-up">Coming Up
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="obs-scene" value="champ-select">Champ Select
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="obs-scene" value="loading">Loading
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="obs-scene" value="in-game">In Game
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="obs-scene" value="analysis">Analysis
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="obs-scene" value="end">End
+        </label>
+    </div>
+    <div id="obs-stream-status" class="alert alert-danger" role="alert" style="text-align: center; font-weight: bold; margin-bottom: 0;">LOADING...</div>
 
-<div class="modal fade" id="obs-stream-start-modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">ARE YOU SURE?</h4>
-            </div>
-            <div class="modal-body">
-                <b>MAKE SURE OF THE FOLLOWING BEFORE GOING LIVE</b>
-                <ul>
-                    <li>All games are loaded into the Coming Up panel, including rosters, tags, form etc.</li>
-                    <li>The timer is set.</li>
-                    <li>Champion Select is cleared ready for the first game.</li>
-                    <li>The in-game text is correct (ie. week and day are correct).</li>
-                </ul>
-                <b>IF YOU CLICK THE 'GO LIVE' BUTTON, YOU WILL GO LIVE IMMEDIATELY!</b>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
-                <button type="button" class="btn btn-danger" id="obs-start-confirm" data-dismiss="modal">GO LIVE</button>
-            </div>
+    <hr>
+
+    <div class="btn-group btn-group-justified">
+        <div class="btn-group">
+            <button class="btn btn-xs btn-success" id="obs-start-prompt"  nodecg-dialog="obs-control-modal">Start Stream</button>
+        </div>
+        <div class="btn-group">
+            <button class="btn btn-xs btn-danger" id="obs-stop-btn">Stop Stream</button>
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="components/obs-remote/dist/obs-remote.min.js"></script>
+<script type="text/javascript" src="obs.js"></script>
+</body>
+</html>

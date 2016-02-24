@@ -11,8 +11,8 @@ var $castersUpdateBtn = $("#caster-update");
 /** REPLICANTS **/
 var casters = nodecg.Replicant("casters", {defaultValue: ["", ""]})
     .on("change", function(oldVal, newVal) {
-        newVal.forEach(function(name, i) { // Update fields in dashboard.
-            $casterFields[i].val(name);
+        $.each(newVal, function(key, value) { // Update fields in dashboard.
+            $casterFields[key].val(value);
         });
         $castersUpdateBtn.prop("disabled", true).removeClass("btn-primary"); // Disable update button.
     });

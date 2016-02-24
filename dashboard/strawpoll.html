@@ -1,18 +1,33 @@
-<div class="form-group">
-    <input type="text" class="form-control" id="strawpoll-blue" placeholder="Blue Team">
-</div>
-<div class="form-group">
-    <input type="text" class="form-control" id="strawpoll-red" placeholder="Red Team">
-</div>
-<div class="form-group">
-    <input type="hidden" id="strawpoll-id">
-    <input type="text" class="form-control" id="strawpoll-url" placeholder="URL" disabled>
-</div>
-<div class="btn-group btn-group-justified">
-    <div class="btn-group">
-        <button class="btn btn-primary btn-xs" id="strawpoll-create">Create Poll</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="import" href="master.html">
+    <link rel="stylesheet" href="components/typeahead.js-bootstrap3.less/typeaheadjs.css">
+</head>
+<body>
+<div id="container">
+    <div class="form-group">
+        <input type="text" class="form-control" id="strawpoll-blue" placeholder="Blue Team">
     </div>
-    <div class="btn-group">
-        <button class="btn btn-success btn-xs" id="strawpoll-toggle" disabled>Show</button>
+    <div class="form-group">
+        <input type="text" class="form-control" id="strawpoll-red" placeholder="Red Team">
+    </div>
+    <div class="form-group">
+        <input type="hidden" id="strawpoll-id">
+        <input type="text" class="form-control" id="strawpoll-url" placeholder="URL" disabled>
+    </div>
+    <div class="btn-group btn-group-justified">
+        <div class="btn-group">
+            <button class="btn btn-primary btn-xs" id="strawpoll-create">Create Poll</button>
+        </div>
+        <div class="btn-group">
+            <button class="btn btn-success btn-xs" id="strawpoll-toggle" disabled>Show</button>
+        </div>
     </div>
 </div>
+
+<script src="components/typeahead.js/dist/typeahead.bundle.min.js"></script>
+<script type="text/javascript" src="strawpoll.js"></script>
+</body>
+</html>
