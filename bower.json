@@ -1,6 +1,16 @@
 {
   "name": "vespyr",
   "dependencies": {
-    "jquery-ui": "~1.11.4"
+    "bootstrap-switch": "~3.3.2",
+    "gsap": "greensock-js#~1.10.2",
+    "bootswatch": "^3.3.6",
+    "jquery-ui": "~1.11.4",
+    "jquery.countdown": "~2.1.0",
+    "jquery.easing": "~1.3.1",
+    "lodash": "~2.4.1",
+    "nodecg-toast": "nodecgelements/nodecg-toast#^0.1.2",
+    "obs-remote": "^1.0.1",
+    "typeahead.js": "~0.11.1",
+    "typeahead.js-bootstrap3.less": "typeahead.js-bootstrap-css#~1.2.1"
   }
 }
