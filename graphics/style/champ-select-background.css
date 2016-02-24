@@ -137,8 +137,19 @@ body {
 
     overflow: hidden;
 }
+#middle-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 
-#mid-vid {
-    margin-left: -53px;
+    background-size: 1174px 698px;
+    z-index: -1
 }
+#middle-fg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 
+    background-size: 1174px 698px;
+    z-index: 1;
+}
