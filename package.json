@@ -1,6 +1,130 @@
 {
   "name": "vespyr",
+  "version": "0.2.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/VespyrLeague/vespyr-nodecg.git"
+  },
+  "homepage": "https://vespyrleague.com",
+  "contributors": [
+    "Chris Stevens <contact@cstevens.biz> (http://cstevens.biz)"
+  ],
+  "description": "Stream controller and assets for the Vespyr League livestream.",
+  "nodecg": {
+    "compatibleRange": "~0.7.0",
+    "dashboardPanels": [
+      {
+        "name": "scene-control",
+        "title": "Scene Control",
+        "width": 6,
+        "headerColor": "#318DAF",
+        "file": "scenes.html"
+      },
+      {
+        "name": "obs-control",
+        "title": "OBS Control",
+        "width": 2,
+        "headerColor": "#318DAF",
+        "file": "obs.html"
+      },
+      {
+        "name": "obs-control-modal",
+        "title": "Are you sure?",
+        "width": 4,
+        "dialog": true,
+        "dialogButtons": [
+          {
+            "name": "CANCEL",
+            "type": "dismiss"
+          },
+          {
+            "name": "GO LIVE",
+            "type": "confirm"
+          }
+        ],
+        "file": "obs-control-modal.html"
+      },
+      {
+        "name": "strawpoll",
+        "title": "Stawpoll",
+        "width": 2,
+        "headerColor": "#318DAF",
+        "file": "strawpoll.html"
+      },
+      {
+        "name": "casters",
+        "title": "Casters",
+        "width": 2,
+        "headerColor": "#318DAF",
+        "file": "casters.html"
+      },
+      {
+        "name": "refresh",
+        "title": "Refresh",
+        "width": 2,
+        "headerColor": "#318DAF",
+        "file": "refresh.html"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "start.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
+        "file": "coming-up.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
+        "file": "champ-select.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
+        "file": "champ-select-background.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
+        "file": "champ-select-foreground.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
+        "file": "loading.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
+        "file": "in-game.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
+        "file": "analysis.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
+        "file": "end.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      }
+    ]
+  },
   "dependencies": {
-    "hyperquest": "1.2.0"
+    "hyperquest": "1.2.0",
+    "concat-stream": "1.5.1"
   }
 }
