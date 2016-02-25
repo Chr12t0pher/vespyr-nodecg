@@ -404,20 +404,22 @@ $comingUpUpdateBtn.click(function() {
 });
 
 $comingUpResetBtn.click(function() {
-    $.each($comingUpInfo, function(game, value) { // For each game...
-        $.each(value, function(team, value) { // For each team...
-            $.each(value["info"], function(key, value) { // For each of the team info...
-                value.val("");
-            });
-            $.each(value["roster"], function(position, value) { // For each player in the roster...
-                value.val("");
-            });
-        });
-    });
-    $("#scenes-coming-up-bg-colour").val("blue");
-    $("#scenes-coming-up-next-game").val("game1");
-    $("#scenes-coming-up-timer").val("19:00:00");
-    sceneTeamUpdate();
+	if (window.confirm("Are you sure?")) {
+		$.each($comingUpInfo, function (game, value) { // For each game...
+			$.each(value, function (team, value) { // For each team...
+				$.each(value["info"], function (key, value) { // For each of the team info...
+					value.val("");
+				});
+				$.each(value["roster"], function (position, value) { // For each player in the roster...
+					value.val("");
+				});
+			});
+		});
+		$("#scenes-coming-up-bg-colour").val("blue");
+		$("#scenes-coming-up-next-game").val("game1");
+		$("#scenes-coming-up-timer").val("19:00:00");
+		sceneTeamUpdate();
+	}
 });
 
 $(".scenes-coming-up-game-update").click(function() {
@@ -426,16 +428,18 @@ $(".scenes-coming-up-game-update").click(function() {
 });
 
 $(".scenes-coming-up-game-reset").click(function() {
-    var game = $(this).data("game");
-    $.each($comingUpInfo[game], function(team, value) { // For each team...
-        $.each(value["info"], function(key, value) { // For each of the team info...
-            value.val("");
-        });
-        $.each(value["roster"], function(position, value) { // For each player in the roster...
-            value.val("");
-        });
-    });
-    sceneTeamUpdate()
+	if (window.confirm("Are you sure?")) {
+		var game = $(this).data("game");
+		$.each($comingUpInfo[game], function (team, value) { // For each team...
+			$.each(value["info"], function (key, value) { // For each of the team info...
+				value.val("");
+			});
+			$.each(value["roster"], function (position, value) { // For each player in the roster...
+				value.val("");
+			});
+		});
+		sceneTeamUpdate()
+	}
 });
 
 /** SWITCH SIDES **/
@@ -623,16 +627,18 @@ $(".bootswitch").on("switchChange.bootstrapSwitch", function(event, state) {
 /** MISC **/
 // Reset fields.
 $("#champ-reset").click(function() {
-    $.each(["blue", "red"], function(key, team) {
-        $.each($.extend($inputChamps[team], $inputBans[team]), function(key, value) {
-            value.val("");
-        });
-        $.each($inputSwitches[team], function(key, value) {
-            value.bootstrapSwitch("state", false, true)
-        });
-    });
-    champUpdate();
-    nodecg.sendMessage("champ-picked-clear")
+	if (window.confirm("Are you sure?")) {
+		$.each(["blue", "red"], function(key, team) {
+			$.each($.extend($inputChamps[team], $inputBans[team]), function(key, value) {
+				value.val("");
+			});
+			$.each($inputSwitches[team], function(key, value) {
+				value.bootstrapSwitch("state", false, true)
+			});
+		});
+		champUpdate();
+		nodecg.sendMessage("champ-picked-clear")
+	}
 });
 
 // Init the toggle switches for deciding if a champ is locked in or not.
@@ -685,10 +691,12 @@ $inGameUpdateBtn.click(function() {
 
 /** RESET **/
 $inGameResetBtn.click(function() {
-    $inGameTexts["left"]["top"].val("");
-    $inGameTexts["left"]["bottom"].val("");
-    $inGameTexts["right"].val("");
-    inGameUpdate();
+	if (window.confirm("Are you sure?")) {
+		$inGameTexts["left"]["top"].val("");
+		$inGameTexts["left"]["bottom"].val("");
+		$inGameTexts["right"].val("");
+		inGameUpdate();
+	}
 });
 
 

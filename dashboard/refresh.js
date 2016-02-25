@@ -1,6 +1,8 @@
 $("#refresh-btn").click(function() {
-    var checked = $("input[type='checkbox']:checked").map(function() {
-        nodecg.sendMessage("refresh", $(this).val());
-        $(this).attr("checked", false);
-    });
+	if (window.confirm("Are you sure?")) {
+		var checked = $("input[type='checkbox']:checked").map(function () {
+			nodecg.sendMessage("refresh", $(this).val());
+			$(this).attr("checked", false);
+		});
+	}
 });

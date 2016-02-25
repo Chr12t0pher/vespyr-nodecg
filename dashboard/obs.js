@@ -105,5 +105,7 @@ $("#obs-ip-btn").click(function() {
 
 /** START/STOP **/
 $obsStopBtn.click(function() {
-    nodecg.sendMessage("obs-stop");
+	if (window.confirm("Are you sure you want to stop the stream?")) {
+		nodecg.sendMessage("obs-stop");
+	}
 });
