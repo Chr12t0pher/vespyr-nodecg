@@ -719,7 +719,6 @@ module.exports = function(nodecg) {
 	};
 
 	obs.onStreamStarted = function(previewing) {
-		console.log(previewing);
 		if (!previewing) {
 			nodecg.sendMessage("obs-onStreamStarted", "live");
 		} else {
