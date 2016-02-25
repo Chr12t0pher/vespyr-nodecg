@@ -40,6 +40,20 @@ nodecg.listenFor("obs-currentScene", function(scene) {
 	obsScene.value = scene["name"];
 });
 
+nodecg.listenFor("obs-currentStreamStatus", function(data) {
+	var stream = data.live, previewing = data.previewing;
+	if (stream && !previewing) {
+		$streamStatus.removeClass().addClass("alert alert-success").text("STREAM LIVE");
+		$obsStartPromptBtn.parent().hide();
+	} else if (stream && previewing) {
+		$streamStatus.removeClass().addClass("alert alert-warning").text("STREAM PREVIEWING");
+		$obsStopBtn.parent().hide();
+	} else {
+		$streamStatus.removeClass().addClass("alert alert-danger").text("STREAM OFFLINE");
+		$obsStopBtn.parent().hide();
+	}
+});
+
 nodecg.listenFor("obs-onAuthenticationFailed", function() {
     $obsStatus.removeClass().addClass("alert alert-danger").text("AUTHENTICATION FAILED");
 });
