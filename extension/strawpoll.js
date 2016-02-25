@@ -20,7 +20,11 @@ function get(id) {
 }
 
 module.exports = function(nodecg) {
-    nodecg.listenFor("strawpoll-create", function(data, callback) {
+	var strawpollReplicant = nodecg.Replicant("strawpoll",
+		{defaultValue: {"id": "", "options": ["", ""], "result": [0,0], "show": false, "time": 0}}
+	);
+
+    nodecg.listenFor("strawpoll-create", function(data) {
         var stream = create({
             title: "Who will win?",
             options: data,
@@ -30,31 +34,23 @@ module.exports = function(nodecg) {
 
         stream.pipe(concat(function(poll) {
             poll = JSON.parse(poll);
-            callback(poll.id)
+			strawpollReplicant.value = {"id": poll.id, "options": data, "result": [0, 0], "show": false, "time": 0};
         }));
     });
 
-    var stop = false;
-    var strawpollReplicant = nodecg.Replicant("strawpoll", {defaultValue: [1,1]});
-
-    nodecg.listenFor("strawpoll-start", function(data) {
-        stop = false;
-        var i = 0;
-        function checkResults() {
-            if (!stop && i <= 600) { // Update for 10 minutes max.
-                i += 1;
-                var stream = get(data)
-                    .pipe(concat(function(poll) {
-                        poll = JSON.parse(poll);
-                        strawpollReplicant.value = poll["votes"];
-                        setTimeout(function() { checkResults(); }, 2000);
-                    }));
-            }
-        }
-        checkResults();
-    });
-
-    nodecg.listenFor("strawpoll-stop", function() {
-        stop = true;
+    strawpollReplicant.on("change", function(oldVal, newVal) {
+		if (newVal["show"]) {
+			if (newVal["time"] <= 600) { // Update for 10 minutes max.
+				var stream = get(newVal["id"])
+					.pipe(concat(function(poll) {
+						poll = JSON.parse(poll);
+						setTimeout(function() {
+							newVal["time"] += 3;
+							newVal["result"] = poll["votes"];
+							strawpollReplicant.value = newVal;
+						}, 3000);
+					}));
+			}
+		}
     });
 };

@@ -140,31 +140,26 @@ $(window).on("load", function() {
 
     var strawpollReplicant = nodecg.Replicant("strawpoll")
         .on("change", function(oldVal, newVal) {
-            if (isNaN(newVal[0])) {
-                console.log(newVal)
-            } // If undefined, return as we don't need to do anything - default is 0% 0%.
-            else {
-                var total = newVal[0] + newVal[1];
+            if (newVal["show"]) {
+				if ($poll.css("opacity") != 1.0) {
+					nodecg.sendMessage("champ-picked-clear");
+					$poll.animate({opacity: 1.0}, 500);
+				}
+				$("#poll-url").text("strawpoll.me/" + newVal["id"]);
+                var total = newVal["result"][0] + newVal["result"][1];
 				if (currTotal == total) { return } // Dont do math if it's the same.
 				currTotal = total;
                 if (total == 0) {
                     total = 1
                 } // Set total to 1 if it's 0 so we don't get divide by zero errors.
-                var percentage = [Math.round((newVal[0] / total) * 100), Math.round((newVal[1] / total) * 100)];
+                var percentage = [Math.round((newVal["result"][0] / total) * 100),
+					Math.round((newVal["result"][1] / total) * 100)];
                 $pollBar["blue"].animate({width: percentage[0] + "%"});
                 $pollBar["red"].animate({width: percentage[1] + "%"});
                 $pollValues["blue"].text(percentage[0] + "%");
                 $pollValues["red"].text(percentage[1] + "%");
-            }
+            } else if ($poll.css("opacity") != 0.0) {
+				$poll.animate({opacity: 0.0}, 500)
+			}
         });
-
-    nodecg.listenFor("strawpoll-start", function(data) {
-		nodecg.sendMessage("champ-picked-clear");
-        $("#poll-url").text("strawpoll.me/" + data);
-        $poll.animate({opacity: 1.0}, 500);
-    });
-
-    nodecg.listenFor("strawpoll-stop", function() {
-        $poll.animate({opacity: 0.0}, 500)
-    });
 });
