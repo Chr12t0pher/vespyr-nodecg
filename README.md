@@ -16,7 +16,7 @@ $ nodecg install
 ![](http://i.imgur.com/LKt6n1Q.gif)
 
 ##### Champ Select
-![](http://i.imgur.com/B69HnpQ.gif)
+![](http://i.imgur.com/WzZD696.jpg)
 
 ##### In-Game
 ![](http://i.imgur.com/LnMpAVV.gif)
