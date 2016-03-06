@@ -606,8 +606,7 @@ $(".bootswitch").on("switchChange.bootstrapSwitch", function(event, state) {
                 var picks = Number(result["picks"]) + 1;
                 var bans = Number(result["bans"]);
                 var wins = Number(result["wins"]);
-
-                pickrate = (Math.round((picks / total_games) * 100)) + "% (" + picks + "/" + total_games + ")";
+                pickrate = (Math.round((picks / (total_games - bans)) * 100)) + "% (" + picks + "/" + (total_games - bans) + ")";
                 banrate = (Math.round((bans / total_games) * 100)) + "% (" + bans + "/" + total_games + ")";
                 if (result["picks"] != 0) { // If it's not a first pick, update winrate (stops divide by zero errors).
                     winrate = (Math.round((wins / (picks - 1)) * 100)) + "% (" + wins + "/" + (picks - 1) + ")";
