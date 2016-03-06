@@ -56,17 +56,24 @@ $(window).on("load", function() {
     var $scoreBoard = $("#score");
     var $bottomLeft = $("#bottom-left");
     var $bottomCenter = $("#bottom-center");
-
+	var $bottomRight = $("#bottom-right");
+	var toggle = function(element) {
+		(element.is(":visible")) ? element.hide() : element.show();
+	};
     nodecg.listenFor("lolEvent", function (key) {
-        if (key == "A") { // If teamfight.
-            ($scoreBoard.is(":visible")) ? $scoreBoard.hide() : $scoreBoard.show(); // Toggle score.
-            ($bottomLeft.is(":visible")) ? $bottomLeft.hide() : $bottomLeft.show(); // Toggle info box.
-            ($bottomCenter.is(":visible")) ? $bottomCenter.hide() : $bottomCenter.show(); // Toggle text bar.
-        }
+		if (key == "H") {
+			toggle($scoreBoard); toggle($bottomLeft); toggle($bottomCenter); toggle($bottomRight);
+		} else if (key == "A") {
+			toggle($scoreBoard); toggle($bottomLeft); toggle($bottomCenter);
+		} else if (key == "Tab" || key == "O") {
+			toggle($bottomCenter);
+		} else if (key == "Reset") {
+			$scoreBoard.show(); $bottomLeft.show(); $bottomCenter.show(); $bottomRight.show()
+		}
     });
 
     function cycleImages() {
-        var $current = $("#bottom-left-images .active");
+        var $current = $("#bottom-left-images.active");
         var $next = ($current.next().length > 0) ? $current.next() : $("#bottom-left-images img:first");
         $current.fadeOut(1000, function () {
             $current.removeClass("active"); // Reset z-index and unhide.
