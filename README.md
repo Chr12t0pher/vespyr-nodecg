@@ -3,6 +3,10 @@ NodeCG bundle for the Vespyr League of Legends stream.
 
 ### Installing
 ```
+!!! Please note this code is provided for educational use only,
+!!! if you want to use any part of it for any other purpose, get
+!!! in touch with me via contact@cstevens.biz - thanks!
+
 $ nodecg install vespyrleague/vespyr-nodecg
 $ cd bundles/vespyr-nodecg
 $ nodecg install
