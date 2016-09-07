@@ -1,11 +1,11 @@
 {
-  "name": "vespyr",
+  "name": "vespyr-nodecg",
   "version": "0.2.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/VespyrLeague/vespyr-nodecg.git"
   },
-  "homepage": "https://vespyrleague.com",
+  "homepage": "http://cstevens.biz",
   "contributors": [
     "Chris Stevens <contact@cstevens.biz> (http://cstevens.biz)"
   ],
