@@ -152,6 +152,9 @@ var sceneTeamReplicant = nodecg.Replicant("team-data")
     });
 
 /** TYPEAHEAD **/
+/* This section is blanked out as the APIs used to get the typeahead data are no longer active, so the page takes ages
+ * to load while it tries to access the APIs then eventually times out. Sorry!
+
 $(document).ready(function() {
     $.ajaxSetup({
         async: false
@@ -236,7 +239,7 @@ $(document).ready(function() {
         });
     };
 });
-
+*/
 
 /** UPDATING **/
 var sceneTeamUpdate = function(game) {
